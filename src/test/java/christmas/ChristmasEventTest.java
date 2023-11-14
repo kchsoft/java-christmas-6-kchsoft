@@ -4,10 +4,13 @@ import static Event.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
 import static Event.EventConstant.EVENT_MONTH;
 import static Event.EventConstant.EVENT_YEAR;
 import static Event.EventNameConstant.SPECIAL_DISCOUNT;
+import static Event.EventNameConstant.WEEKDAY_DISCOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import Event.DateDiscountEvent;
 import Event.DateDiscountEventHistory;
+import Event.DayDiscountEvent;
+import Event.DayDiscountEventHistory;
 import Event.SpecialDiscountEvent;
 import Event.SpecialDiscountEventHistory;
 import java.time.DayOfWeek;
@@ -44,22 +47,22 @@ public class ChristmasEventTest {
         order.addMenu(Menu.MUSHROOM_SOUP, 3);
         order.addMenu(Menu.ICE_CREAM, 2);
 
-        assertThat(order.getNumberOfMenu(Menu.BBQ_RIB)).isEqualTo(1);
-        assertThat(order.getNumberOfMenu(Menu.BBQ_RIB)).isNotEqualTo(0);
-        assertThat(order.getNumberOfMenu(Menu.BBQ_RIB)).isNotEqualTo(2);
+        assertThat(order.countNumberOf(Menu.BBQ_RIB)).isEqualTo(1);
+        assertThat(order.countNumberOf(Menu.BBQ_RIB)).isNotEqualTo(0);
+        assertThat(order.countNumberOf(Menu.BBQ_RIB)).isNotEqualTo(2);
 
-        assertThat(order.getNumberOfMenu(Menu.MUSHROOM_SOUP)).isEqualTo(3);
-        assertThat(order.getNumberOfMenu(Menu.ICE_CREAM)).isEqualTo(2);
-        assertThat(order.getNumberOfMenu(Menu.RED_WINE)).isEqualTo(0);
+        assertThat(order.countNumberOf(Menu.MUSHROOM_SOUP)).isEqualTo(3);
+        assertThat(order.countNumberOf(Menu.ICE_CREAM)).isEqualTo(2);
+        assertThat(order.countNumberOf(Menu.RED_WINE)).isEqualTo(0);
     }
 
     @DisplayName("d-day 할인이 적용 되는지 확인")
     @Test
-    void applyD_DayDiscountEvent(){
+    void applyD_DayDiscountEvent() {
         DateDiscountEvent event = new DateDiscountEvent();
         Order order = new Order(visitingDay);
         Receipt receipt = new Receipt(order);
-        DateDiscountEventHistory history = (DateDiscountEventHistory)event.apply(order);
+        DateDiscountEventHistory history = (DateDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(CHRISTMAS_D_DAY_DISCOUNT_EVENT);
         assertThat(history.getDiscountAmount()).isEqualTo(2300); // day is 14
@@ -68,7 +71,7 @@ public class ChristmasEventTest {
 
     @DisplayName("특별 할인이 적용 되는지 확인")
     @Test
-    void applySpecialDiscountEvent(){
+    void applySpecialDiscountEvent() {
         SpecialDiscountEvent event = new SpecialDiscountEvent();
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 3);
         Order order = new Order(visitingDay);

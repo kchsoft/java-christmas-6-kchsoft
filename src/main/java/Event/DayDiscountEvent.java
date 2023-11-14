@@ -30,7 +30,7 @@ public class DayDiscountEvent implements Event<Order> {
         Integer dessertCount = 0;
         List<Menu> dessertMenu = order.getMenusOfType(DESSERT);
         for (Menu menu : dessertMenu) {
-            dessertCount += order.getNumberOfMenu(menu);
+            dessertCount += order.countNumberOf(menu);
         }
         return new DayDiscountEventHistory(WEEKDAY_DISCOUNT, new Money(DAY_DISCOUNT * dessertCount));
     }

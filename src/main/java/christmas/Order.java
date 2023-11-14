@@ -23,7 +23,7 @@ public class Order {
         return visitingDay.getDayOfMonth();
     }
 
-    public Integer getNumberOfMenu(Menu menu) {
+    public Integer countNumberOf(Menu menu) {
         if(sheet.containsKey(menu)){
             return sheet.get(menu);
         }
