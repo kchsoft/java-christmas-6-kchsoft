@@ -121,7 +121,8 @@ public class ChristmasEventTest {
     void applyGiftEvent(){
         GiftEvent event = new GiftEvent();
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.MUSHROOM_SOUP,2);
+        order.addMenu(Menu.T_BONE_STEAK,2);
+        order.addMenu(Menu.CHOCOLATE_CAKE,2); // over 12,000원
 
         Receipt receipt = new Receipt(order);
         GiftEventHistory history = (GiftEventHistory) event.apply(order);
