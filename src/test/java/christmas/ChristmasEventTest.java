@@ -5,6 +5,7 @@ import static Event.EventConstant.EVENT_MONTH;
 import static Event.EventConstant.EVENT_YEAR;
 import static Event.EventNameConstant.SPECIAL_DISCOUNT;
 import static Event.EventNameConstant.WEEKDAY_DISCOUNT;
+import static Event.EventNameConstant.WEEKEND_DISCOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import Event.DateDiscountEvent;
@@ -86,7 +87,7 @@ public class ChristmasEventTest {
     @Test
     void applyWeekdayDessertDiscount(){
         DayDiscountEvent event = new DayDiscountEvent();
-        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 5); // TUESDAY - WEEKEND
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 5); // TUESDAY - WEEKDAY
         Order order = new Order(visitingDay);
         order.addMenu(Menu.ICE_CREAM,3);
 
@@ -95,6 +96,21 @@ public class ChristmasEventTest {
 
         assertThat(history.explainName()).isEqualTo(WEEKDAY_DISCOUNT);
         assertThat(history.getDiscountAmount()).isEqualTo(2023*3);
+    }
+
+    @DisplayName("주말 할인이 적용 되는지 확인")
+    @Test
+    void applyWeekendDessertDiscount(){
+        DayDiscountEvent event = new DayDiscountEvent();
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 2); // SATURDAY - WEEKEND
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.BBQ_RIB,6);
+
+        Receipt receipt = new Receipt(order);
+        DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
+
+        assertThat(history.explainName()).isEqualTo(WEEKEND_DISCOUNT);
+        assertThat(history.getDiscountAmount()).isEqualTo(2023*6);
     }
 
 }
