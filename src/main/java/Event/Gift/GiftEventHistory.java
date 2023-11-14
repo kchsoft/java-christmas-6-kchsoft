@@ -8,7 +8,7 @@ public class GiftEventHistory implements EventHistory {
     private final String eventName;
     private Menu gift;
 
-    public GiftEventHistory(String eventName, Menu gifts) {
+    public GiftEventHistory(String eventName, Menu gift) {
         this.eventName = eventName;
         this.gift = gift;
     }

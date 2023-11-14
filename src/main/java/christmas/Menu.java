@@ -11,7 +11,7 @@ public enum Menu {
     CAESAR_SALAD(APPETIZER,"시저샐러드",8000),
     T_BONE_STEAK(MAIN,"티본스테이크",55000),
     BBQ_RIB(MAIN,"바비큐립",54000),
-    SEAFOOD_PASTA(MAIN,"해산물파스다",35000),
+    SEAFOOD_PASTA(MAIN,"해산물파스타",35000),
     CHRISTMAS_PASTA(MAIN,"크리스마스파스타",25000),
     CHOCOLATE_CAKE(DESSERT,"초코케이크",15000),
     ICE_CREAM(DESSERT,"아이스크림",5000),
