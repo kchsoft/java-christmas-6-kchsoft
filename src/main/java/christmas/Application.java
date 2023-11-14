@@ -21,7 +21,7 @@ public class Application {
         receipt.addHistory(specialDiscountEvent.apply(order));
 
         DayDiscountEvent dayDiscountEvent = new DayDiscountEvent();
-        receipt.addHistory(dateDiscountEvent.apply(order));
+        receipt.addHistory(dayDiscountEvent.apply(order));
     }
 
 }

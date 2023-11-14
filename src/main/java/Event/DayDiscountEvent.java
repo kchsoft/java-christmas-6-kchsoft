@@ -1,7 +1,9 @@
 package Event;
 
 import static Event.EventNameConstant.WEEKDAY_DISCOUNT;
+import static Event.EventNameConstant.WEEKEND_DISCOUNT;
 import static christmas.RestaurantMenuConstant.DESSERT;
+import static christmas.RestaurantMenuConstant.MAIN;
 
 import christmas.Menu;
 import christmas.Money;
@@ -11,7 +13,7 @@ import java.util.List;
 
 public class DayDiscountEvent implements Event<Order> {
 
-    private final Integer DAY_DISCOUNT = 2023;
+    private final Integer MENU_DISCOUNT = 2023;
 
     public DayDiscountEvent(){
     }
@@ -32,11 +34,16 @@ public class DayDiscountEvent implements Event<Order> {
         for (Menu menu : dessertMenu) {
             dessertCount += order.countNumberOf(menu);
         }
-        return new DayDiscountEventHistory(WEEKDAY_DISCOUNT, new Money(DAY_DISCOUNT * dessertCount));
+        return new DayDiscountEventHistory(WEEKDAY_DISCOUNT, new Money(MENU_DISCOUNT * dessertCount));
     }
 
     private EventHistory applyWeekendMainDiscount(Order order){
-        return null;
+        Integer mainCount = 0;
+        List<Menu> dessertMenu = order.getMenusOfType(MAIN);
+        for (Menu menu : dessertMenu) {
+            mainCount += order.countNumberOf(menu);
+        }
+        return new DayDiscountEventHistory(WEEKEND_DISCOUNT, new Money(MENU_DISCOUNT * mainCount));
     }
 
 }
