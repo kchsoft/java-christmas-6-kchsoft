@@ -1,15 +1,12 @@
 package christmas;
 
 import static Event.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static christmas.EventConstant.EVENT_MONTH;
-import static christmas.EventConstant.EVENT_YEAR;
+import static Event.EventConstant.EVENT_MONTH;
+import static Event.EventConstant.EVENT_YEAR;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import Event.DateDiscountEvent;
 import Event.DateDiscountEventHistory;
-import Event.EventHistory;
-import camp.nextstep.edu.missionutils.test.NsTest;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;

@@ -1,7 +1,7 @@
 package Event;
 
 import static Event.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
-import static christmas.EventConstant.DATE_DISCOUNT_EVENT_FINAL_DATE;
+import static Event.EventConstant.DATE_DISCOUNT_EVENT_FINAL_DATE;
 
 import christmas.Money;
 import christmas.Order;
