@@ -3,10 +3,13 @@ package christmas;
 import static Event.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
 import static Event.EventConstant.EVENT_MONTH;
 import static Event.EventConstant.EVENT_YEAR;
+import static Event.EventNameConstant.SPECIAL_DISCOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import Event.DateDiscountEvent;
 import Event.DateDiscountEventHistory;
+import Event.SpecialDiscountEvent;
+import Event.SpecialDiscountEventHistory;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
@@ -52,7 +55,7 @@ public class ChristmasEventTest {
 
     @DisplayName("d-day 할인이 적용 되는지 확인")
     @Test
-    void checkD_DayEventDiscountAmount(){
+    void applyD_DayDiscountEvent(){
         DateDiscountEvent event = new DateDiscountEvent();
         Order order = new Order(visitingDay);
         Receipt receipt = new Receipt(order);
@@ -61,6 +64,19 @@ public class ChristmasEventTest {
         assertThat(history.explainName()).isEqualTo(CHRISTMAS_D_DAY_DISCOUNT_EVENT);
         assertThat(history.getDiscountAmount()).isEqualTo(2300); // day is 14
 
+    }
+
+    @DisplayName("특별 할인이 적용 되는지 확인")
+    @Test
+    void applySpecialDiscountEvent(){
+        SpecialDiscountEvent event = new SpecialDiscountEvent();
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 3);
+        Order order = new Order(visitingDay);
+        Receipt receipt = new Receipt(order);
+        SpecialDiscountEventHistory history = (SpecialDiscountEventHistory) event.apply(order);
+
+        assertThat(history.explainName()).isEqualTo(SPECIAL_DISCOUNT);
+        assertThat(history.getDiscountAmount()).isEqualTo(1000);
     }
 
 }
