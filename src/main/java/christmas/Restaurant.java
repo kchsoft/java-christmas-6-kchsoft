@@ -19,4 +19,27 @@ public class Restaurant {
         return LocalDate.of(EVENT_YEAR,EVENT_MONTH,date);
     }
 
+    public Order orderMenu(LocalDate visitingDay){
+        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1");
+        String orderMenu = Console.readLine();
+        String[] orderMenus = orderMenu.split(",");
+        Order order = new Order(visitingDay);
+
+        for (String oneMenu : orderMenus) {
+            String[] orderFormat = oneMenu.split("-");
+            FoodMenu food = findFoodMenu(orderFormat);
+            order.addFood(food,Integer.valueOf(orderFormat[1]));
+        }
+        return order;
+    }
+
+    private FoodMenu findFoodMenu(String[] orderFormat){
+        for(FoodMenu food : FoodMenu.values()){
+            if(food.getMenuName().equals(orderFormat[0])) {
+                return food;
+            }
+        }
+        return null;
+    }
+
 }
