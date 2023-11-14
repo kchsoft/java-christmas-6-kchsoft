@@ -54,4 +54,15 @@ public class Order {
         }
         return new Money(totalPrice);
     }
+
+    public List<Menu> getMenus(){
+        List<Menu> menus = new ArrayList<>();
+        for (Menu oneMenu : Menu.values()) {
+            if (sheet.containsKey(oneMenu)) {
+                menus.add(oneMenu);
+            }
+        }
+        return menus;
+    }
+
 }

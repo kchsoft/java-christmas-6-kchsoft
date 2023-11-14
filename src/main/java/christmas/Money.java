@@ -23,4 +23,17 @@ public class Money {
         this.money += money;
     }
 
+    public String toString(){
+        String commaValue = "";
+
+        commaValue = money % 1000 + commaValue;
+        money /= 1000;
+
+        while (money != 0) {
+            commaValue = "," + commaValue;
+            commaValue = money % 1000 + commaValue;
+            money /= 1000;
+        }
+        return commaValue;
+    }
 }
