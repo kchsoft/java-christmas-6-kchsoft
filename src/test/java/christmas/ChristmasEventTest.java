@@ -3,6 +3,7 @@ package christmas;
 import static Event.Constant.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
 import static Event.Constant.EventConstant.EVENT_MONTH;
 import static Event.Constant.EventConstant.EVENT_YEAR;
+import static Event.Constant.EventNameConstant.GIFT_EVENT;
 import static Event.Constant.EventNameConstant.SPECIAL_DISCOUNT;
 import static Event.Constant.EventNameConstant.WEEKDAY_DISCOUNT;
 import static Event.Constant.EventNameConstant.WEEKEND_DISCOUNT;
@@ -12,6 +13,8 @@ import Event.DateDiscount.DateDiscountEvent;
 import Event.DateDiscount.DateDiscountEventHistory;
 import Event.DayDiscount.DayDiscountEvent;
 import Event.DayDiscount.DayDiscountEventHistory;
+import Event.Gift.GiftEvent;
+import Event.Gift.GiftEventHistory;
 import Event.Special.SpecialDiscountEvent;
 import Event.Special.SpecialDiscountEventHistory;
 import java.time.DayOfWeek;
@@ -85,32 +88,48 @@ public class ChristmasEventTest {
 
     @DisplayName("평일 할인이 적용 되는지 확인")
     @Test
-    void applyWeekdayDessertDiscount(){
+    void applyWeekdayDessertDiscount() {
         DayDiscountEvent event = new DayDiscountEvent();
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 5); // TUESDAY - WEEKDAY
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.ICE_CREAM,3);
+        order.addMenu(Menu.ICE_CREAM, 3);
 
         Receipt receipt = new Receipt(order);
         DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(WEEKDAY_DISCOUNT);
-        assertThat(history.getDiscountAmount()).isEqualTo(2023*3);
+        assertThat(history.getDiscountAmount()).isEqualTo(2023 * 3);
     }
 
     @DisplayName("주말 할인이 적용 되는지 확인")
     @Test
-    void applyWeekendDessertDiscount(){
+    void applyWeekendDessertDiscount() {
         DayDiscountEvent event = new DayDiscountEvent();
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 2); // SATURDAY - WEEKEND
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.BBQ_RIB,6);
+        order.addMenu(Menu.BBQ_RIB, 6);
 
         Receipt receipt = new Receipt(order);
         DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(WEEKEND_DISCOUNT);
-        assertThat(history.getDiscountAmount()).isEqualTo(2023*6);
+        assertThat(history.getDiscountAmount()).isEqualTo(2023 * 6);
+    }
+
+    @DisplayName("증정 이벤트가 적용되는지 확인")
+    @Test
+    void applyGiftEvent(){
+        GiftEvent event = new GiftEvent();
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.MUSHROOM_SOUP,2);
+
+        Receipt receipt = new Receipt(order);
+        GiftEventHistory history = (GiftEventHistory) event.apply(order);
+
+        assertThat(history.explainName()).isEqualTo(GIFT_EVENT);
+        assertThat(history.getGift()).isEqualTo(Menu.CHAMPAGNE);
+        assertThat(history.getGift().getPrice()).isEqualTo(Menu.CHAMPAGNE.getPrice());
+
     }
 
 }
