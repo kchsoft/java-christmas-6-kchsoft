@@ -2,6 +2,7 @@ package christmas;
 
 import Event.DateDiscountEvent;
 import Event.DayDiscountEvent;
+import Event.GiftEvent;
 import Event.SpecialDiscountEvent;
 import java.time.LocalDate;
 
@@ -22,6 +23,10 @@ public class Application {
 
         DayDiscountEvent dayDiscountEvent = new DayDiscountEvent();
         receipt.addHistory(dayDiscountEvent.apply(order));
+
+        GiftEvent giftEvent = new GiftEvent();
+        receipt.addHistory(giftEvent.apply(order));
+
     }
 
 }

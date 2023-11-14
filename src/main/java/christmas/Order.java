@@ -45,4 +45,13 @@ public class Order {
         sheet.put(menu, menuCount);
     }
 
+    public Money sumOrderPrice(){
+        Integer totalPrice = 0;
+        Integer menuCount = 0;
+        for (Menu oneMenu : Menu.values()) {
+            menuCount = countNumberOf(oneMenu);
+            totalPrice += menuCount * oneMenu.getPrice();
+        }
+        return new Money(totalPrice);
+    }
 }
