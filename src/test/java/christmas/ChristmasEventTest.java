@@ -125,10 +125,10 @@ public class ChristmasEventTest {
 
     @DisplayName("할인 전 총 금액 종합 확인")
     @Test
-    void sumOriginalPrice(){
+    void sumOriginalPrice() {
         GiftEvent event = new GiftEvent();
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.MUSHROOM_SOUP,2);
+        order.addMenu(Menu.MUSHROOM_SOUP, 2);
 
         Money originalPrice = order.sumPrice();
         assertThat(originalPrice.getAmount()).isEqualTo(12000);
@@ -137,11 +137,11 @@ public class ChristmasEventTest {
 
     @DisplayName("증정 이벤트가 적용되는지 확인")
     @Test
-    void applyGiftEvent(){
+    void applyGiftEvent() {
         GiftEvent event = new GiftEvent();
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.T_BONE_STEAK,2);
-        order.addMenu(Menu.CHOCOLATE_CAKE,2); // over 12,000원
+        order.addMenu(Menu.T_BONE_STEAK, 2);
+        order.addMenu(Menu.CHOCOLATE_CAKE, 2); // over 12,000원
 
         Receipt receipt = new Receipt(order);
         GiftEventHistory history = (GiftEventHistory) event.apply(order);
@@ -154,10 +154,10 @@ public class ChristmasEventTest {
 
     @DisplayName("할인 금액을 올바르게 구하는지 확인")
     @Test
-    void checkDiscountAmount(){
+    void checkDiscountAmount() {
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.ICE_CREAM,3);
+        order.addMenu(Menu.ICE_CREAM, 3);
         Receipt receipt = new Receipt(order);
 
         Event event = new DateDiscountEvent();
@@ -176,12 +176,12 @@ public class ChristmasEventTest {
 
     @DisplayName("배지 이벤트가 SANTA가 적용되는지 확인")
     @Test
-    void applyBadgeEvent_SANTA(){
+    void applyBadgeEvent_SANTA() {
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
         Event event;
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.ICE_CREAM,10);
-        order.addMenu(Menu.T_BONE_STEAK,2); // over benefit 20,000
+        order.addMenu(Menu.ICE_CREAM, 10);
+        order.addMenu(Menu.T_BONE_STEAK, 2); // over benefit 20,000
 
         Receipt receipt = new Receipt(order);
 
@@ -204,12 +204,12 @@ public class ChristmasEventTest {
 
     @DisplayName("배지 이벤트가 TREE가 적용되는지 확인")
     @Test
-    void applyBadgeEvent_TREE(){
+    void applyBadgeEvent_TREE() {
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
         Event event;
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.ICE_CREAM,5);
-        order.addMenu(Menu.T_BONE_STEAK,2); // benefit 10,000 ~ 19,999
+        order.addMenu(Menu.ICE_CREAM, 5);
+        order.addMenu(Menu.T_BONE_STEAK, 2); // benefit 10,000 ~ 19,999
 
         Receipt receipt = new Receipt(order);
 
@@ -232,11 +232,11 @@ public class ChristmasEventTest {
 
     @DisplayName("배지 이벤트가 STAR가 적용되는지 확인")
     @Test
-    void applyBadgeEvent_STAR(){
+    void applyBadgeEvent_STAR() {
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
         Event event;
         Order order = new Order(visitingDay);
-        order.addMenu(Menu.ICE_CREAM,2); // benefit 5,000 ~ 9,999
+        order.addMenu(Menu.ICE_CREAM, 2); // benefit 5,000 ~ 9,999
 
         Receipt receipt = new Receipt(order);
 
@@ -257,4 +257,17 @@ public class ChristmasEventTest {
 
     }
 
+    @DisplayName("Money가 String으로 변환되는지 확인")
+    @Test
+    void checkMoenyToString(){
+        Money money = new Money(500);
+        assertThat(money.toString()).isEqualTo("500");
+
+        money = new Money(1700);
+        assertThat(money.toString()).isEqualTo("1,700");
+
+        money = new Money(12000);
+        assertThat(money.toString()).isEqualTo("12,000");
+
+    }
 }
