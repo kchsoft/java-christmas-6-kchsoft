@@ -1,18 +1,25 @@
 package christmas;
 
+import static Event.Constant.EventConstant.SANTA;
+import static Event.Constant.EventConstant.STAR;
+import static Event.Constant.EventConstant.TREE;
 import static Event.Constant.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
 import static Event.Constant.EventConstant.EVENT_MONTH;
 import static Event.Constant.EventConstant.EVENT_YEAR;
+import static Event.Constant.EventNameConstant.DECEMBER_EVENT_BADGE;
 import static Event.Constant.EventNameConstant.GIFT_EVENT;
 import static Event.Constant.EventNameConstant.SPECIAL_DISCOUNT;
 import static Event.Constant.EventNameConstant.WEEKDAY_DISCOUNT;
 import static Event.Constant.EventNameConstant.WEEKEND_DISCOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import Event.Badge.BadgeEvent;
+import Event.Badge.BadgeEventHistory;
 import Event.DateDiscount.DateDiscountEvent;
 import Event.DateDiscount.DateDiscountEventHistory;
 import Event.DayDiscount.DayDiscountEvent;
 import Event.DayDiscount.DayDiscountEventHistory;
+import Event.Event;
 import Event.Gift.GiftEvent;
 import Event.Gift.GiftEventHistory;
 import Event.Special.SpecialDiscountEvent;
@@ -83,7 +90,7 @@ public class ChristmasEventTest {
         SpecialDiscountEventHistory history = (SpecialDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(SPECIAL_DISCOUNT);
-        assertThat(history.getDiscountAmount()).isEqualTo(1000);
+        assertThat(history.getBenefitValue()).isEqualTo(1000);
     }
 
     @DisplayName("평일 할인이 적용 되는지 확인")
@@ -142,6 +149,111 @@ public class ChristmasEventTest {
         assertThat(history.explainName()).isEqualTo(GIFT_EVENT);
         assertThat(history.getBenefit()).isEqualTo(Menu.CHAMPAGNE);
         assertThat(history.getBenefit().getPriceValue()).isEqualTo(Menu.CHAMPAGNE.getPriceValue());
+
+    }
+
+    @DisplayName("할인 금액을 올바르게 구하는지 확인")
+    @Test
+    void checkDiscountAmount(){
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.ICE_CREAM,3);
+        Receipt receipt = new Receipt(order);
+
+        Event event = new DateDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new DayDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new SpecialDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        Money discountAmount = receipt.getDiscountAmount();
+        assertThat(discountAmount.getAmount()).isEqualTo(3400 + 2023 * 3 + 1000);
+
+    }
+
+    @DisplayName("배지 이벤트가 SANTA가 적용되는지 확인")
+    @Test
+    void applyBadgeEvent_SANTA(){
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
+        Event event;
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.ICE_CREAM,10);
+        order.addMenu(Menu.T_BONE_STEAK,2); // over benefit 20,000
+
+        Receipt receipt = new Receipt(order);
+
+        event = new DateDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new DayDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new SpecialDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new BadgeEvent();
+        BadgeEventHistory history = (BadgeEventHistory) event.apply(receipt);
+
+        assertThat(history.explainName()).isEqualTo(DECEMBER_EVENT_BADGE);
+        assertThat(history.getBenefit()).isEqualTo(SANTA);
+
+    }
+
+    @DisplayName("배지 이벤트가 TREE가 적용되는지 확인")
+    @Test
+    void applyBadgeEvent_TREE(){
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
+        Event event;
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.ICE_CREAM,5);
+        order.addMenu(Menu.T_BONE_STEAK,2); // benefit 10,000 ~ 19,999
+
+        Receipt receipt = new Receipt(order);
+
+        event = new DateDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new DayDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new SpecialDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new BadgeEvent();
+        BadgeEventHistory history = (BadgeEventHistory) event.apply(receipt);
+
+        assertThat(history.explainName()).isEqualTo(DECEMBER_EVENT_BADGE);
+        assertThat(history.getBenefit()).isEqualTo(TREE);
+
+    }
+
+    @DisplayName("배지 이벤트가 STAR가 적용되는지 확인")
+    @Test
+    void applyBadgeEvent_STAR(){
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
+        Event event;
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.ICE_CREAM,2); // benefit 5,000 ~ 9,999
+
+        Receipt receipt = new Receipt(order);
+
+        event = new DateDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new DayDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new SpecialDiscountEvent();
+        receipt.addHistory(event.apply(order));
+
+        event = new BadgeEvent();
+        BadgeEventHistory history = (BadgeEventHistory) event.apply(receipt);
+
+        assertThat(history.explainName()).isEqualTo(DECEMBER_EVENT_BADGE);
+        assertThat(history.getBenefit()).isEqualTo(STAR);
 
     }
 
