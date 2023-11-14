@@ -1,5 +1,6 @@
 package christmas;
 
+import Event.Badge.BadgeEvent;
 import Event.DateDiscount.DateDiscountEvent;
 import Event.DayDiscount.DayDiscountEvent;
 import Event.Gift.GiftEvent;
@@ -27,6 +28,8 @@ public class Application {
         GiftEvent giftEvent = new GiftEvent();
         receipt.addHistory(giftEvent.apply(order));
 
+        BadgeEvent badgeEvent = new BadgeEvent();
+        receipt.addHistory(badgeEvent.apply(receipt));
     }
 
 }

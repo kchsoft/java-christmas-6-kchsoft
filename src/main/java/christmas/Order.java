@@ -50,7 +50,7 @@ public class Order {
         Integer menuCount = 0;
         for (Menu oneMenu : Menu.values()) {
             menuCount = countNumberOf(oneMenu);
-            totalPrice += menuCount * oneMenu.getPrice();
+            totalPrice += menuCount * oneMenu.getPriceValue();
         }
         return new Money(totalPrice);
     }

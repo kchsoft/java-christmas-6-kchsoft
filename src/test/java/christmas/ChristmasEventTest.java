@@ -141,7 +141,7 @@ public class ChristmasEventTest {
 
         assertThat(history.explainName()).isEqualTo(GIFT_EVENT);
         assertThat(history.getBenefit()).isEqualTo(Menu.CHAMPAGNE);
-        assertThat(history.getBenefit().getPrice()).isEqualTo(Menu.CHAMPAGNE.getPrice());
+        assertThat(history.getBenefit().getPriceValue()).isEqualTo(Menu.CHAMPAGNE.getPriceValue());
 
     }
 

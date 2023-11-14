@@ -37,7 +37,7 @@ public enum Menu {
         return name;
     }
 
-    public Integer getPrice() {
+    public Integer getPriceValue() {
         return price;
     }
 
