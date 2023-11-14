@@ -22,8 +22,8 @@ public class SpecialDiscountEventHistory implements EventHistory{
         return discountAmount.toString();
     }
 
-    public Money getDiscountAmount() {
-        return discountAmount;
+    public Integer getDiscountAmount() {
+        return discountAmount.getAmount();
     }
 
 }
