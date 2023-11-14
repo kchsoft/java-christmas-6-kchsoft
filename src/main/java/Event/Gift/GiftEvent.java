@@ -19,7 +19,7 @@ public class GiftEvent implements Event<Order> {
 
     @Override
     public EventHistory apply(Order order) {
-        Money originalMoney = order.sumOrderPrice();
+        Money originalMoney = order.sumPrice();
         if (originalMoney.getAmount() >= BASE_AMOUNT_OF_GIFT) {
             return new GiftEventHistory(GIFT_EVENT, gift);
         }

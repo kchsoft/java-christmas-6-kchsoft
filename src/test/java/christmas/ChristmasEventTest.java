@@ -123,7 +123,7 @@ public class ChristmasEventTest {
         Order order = new Order(visitingDay);
         order.addMenu(Menu.MUSHROOM_SOUP,2);
 
-        Money originalPrice = order.sumOrderPrice();
+        Money originalPrice = order.sumPrice();
         assertThat(originalPrice.getAmount()).isEqualTo(12000);
 
     }

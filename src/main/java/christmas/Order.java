@@ -45,7 +45,7 @@ public class Order {
         sheet.put(menu, menuCount);
     }
 
-    public Money sumOrderPrice(){
+    public Money sumPrice(){
         Integer totalPrice = 0;
         Integer menuCount = 0;
         for (Menu oneMenu : Menu.values()) {
