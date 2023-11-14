@@ -27,16 +27,16 @@ public class Restaurant {
 
         for (String oneMenu : orderMenus) {
             String[] orderFormat = oneMenu.split("-");
-            FoodMenu food = findFoodMenu(orderFormat);
-            order.addFood(food,Integer.valueOf(orderFormat[1]));
+            Menu menu = findMenu(orderFormat);
+            order.addMenu(menu,Integer.valueOf(orderFormat[1]));
         }
         return order;
     }
 
-    private FoodMenu findFoodMenu(String[] orderFormat){
-        for(FoodMenu food : FoodMenu.values()){
-            if(food.getMenuName().equals(orderFormat[0])) {
-                return food;
+    private Menu findMenu(String[] orderFormat){
+        for(Menu menu : Menu.values()){
+            if(menu.getName().equals(orderFormat[0])) {
+                return menu;
             }
         }
         return null;

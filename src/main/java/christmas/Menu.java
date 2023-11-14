@@ -5,7 +5,7 @@ import static christmas.RestaurantMenuConstant.BEVERAGE;
 import static christmas.RestaurantMenuConstant.DESSERT;
 import static christmas.RestaurantMenuConstant.MAIN;
 
-public enum FoodMenu {
+public enum Menu {
     MUSHROOM_SOUP(APPETIZER,"양송이수프",6000),
     TAPAS(APPETIZER,"타파스",5500),
     CAESAR_SALAD(APPETIZER,"시저샐러드",8000),
@@ -19,22 +19,22 @@ public enum FoodMenu {
     RED_WINE(BEVERAGE,"레드와인",60000),
     CHAMPAGNE(BEVERAGE,"샴페인",25000);
 
-    private final String foodType;
-    private final String menuName;
+    private final String type;
+    private final String name;
     private final Integer price;
 
-    FoodMenu (String foodType,String menuName,Integer price){
-        this.foodType = foodType;
-        this.menuName = menuName;
+    Menu(String type, String name, Integer price){
+        this.type = type;
+        this.name = name;
         this.price = price;
     }
 
-    public String getFoodType() {
-        return foodType;
+    public String getType() {
+        return type;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public String getName() {
+        return name;
     }
 
     public Integer getPrice() {

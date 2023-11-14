@@ -40,17 +40,17 @@ public class ChristmasEventTest {
     @Test
     void checkOrderMenu() {
         Order order = new Order(visitingDay);
-        order.addFood(FoodMenu.BBQ_RIB, 1);
-        order.addFood(FoodMenu.MUSHROOM_SOUP, 3);
-        order.addFood(FoodMenu.ICE_CREAM, 2);
+        order.addMenu(Menu.BBQ_RIB, 1);
+        order.addMenu(Menu.MUSHROOM_SOUP, 3);
+        order.addMenu(Menu.ICE_CREAM, 2);
 
-        assertThat(order.getNumberOfMenu(FoodMenu.BBQ_RIB)).isEqualTo(1);
-        assertThat(order.getNumberOfMenu(FoodMenu.BBQ_RIB)).isNotEqualTo(0);
-        assertThat(order.getNumberOfMenu(FoodMenu.BBQ_RIB)).isNotEqualTo(2);
+        assertThat(order.getNumberOfMenu(Menu.BBQ_RIB)).isEqualTo(1);
+        assertThat(order.getNumberOfMenu(Menu.BBQ_RIB)).isNotEqualTo(0);
+        assertThat(order.getNumberOfMenu(Menu.BBQ_RIB)).isNotEqualTo(2);
 
-        assertThat(order.getNumberOfMenu(FoodMenu.MUSHROOM_SOUP)).isEqualTo(3);
-        assertThat(order.getNumberOfMenu(FoodMenu.ICE_CREAM)).isEqualTo(2);
-        assertThat(order.getNumberOfMenu(FoodMenu.RED_WINE)).isEqualTo(0);
+        assertThat(order.getNumberOfMenu(Menu.MUSHROOM_SOUP)).isEqualTo(3);
+        assertThat(order.getNumberOfMenu(Menu.ICE_CREAM)).isEqualTo(2);
+        assertThat(order.getNumberOfMenu(Menu.RED_WINE)).isEqualTo(0);
     }
 
     @DisplayName("d-day 할인이 적용 되는지 확인")

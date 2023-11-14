@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 
 public class Order {
-    private HashMap<FoodMenu,Integer> sheet; // foodName , foodNumber
+    private HashMap<Menu,Integer> sheet; // Menu name , Menu count
     private final LocalDate visitingDay;
 
     public Order(LocalDate visitingDay){
@@ -21,15 +21,16 @@ public class Order {
         return visitingDay.getDayOfMonth();
     }
 
-    public Integer getNumberOfMenu(FoodMenu foodMenu) {
-        if(sheet.containsKey(foodMenu)){
-            return sheet.get(foodMenu);
+    public Integer getNumberOfMenu(Menu menu) {
+        if(sheet.containsKey(menu)){
+            return sheet.get(menu);
         }
         return 0;
     }
 
-    public void addFood(FoodMenu foodMenu,Integer menuCount){
-        sheet.put(foodMenu, menuCount);
+
+    public void addMenu(Menu menu, Integer menuCount){
+        sheet.put(menu, menuCount);
     }
 
 }
