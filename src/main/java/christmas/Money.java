@@ -24,15 +24,14 @@ public class Money {
     }
 
     public String toString(){
+        String value = String.valueOf(money);
         String commaValue = "";
 
-        commaValue = money % 1000 + commaValue;
-        money /= 1000;
-
-        while (money != 0) {
-            commaValue = "," + commaValue;
-            commaValue = money % 1000 + commaValue;
-            money /= 1000;
+        for (Integer Index =  1; Index <= value.length(); Index++) {
+            commaValue = value.charAt(value.length() - Index) + commaValue;
+            if (Index % 3 == 0 && Index < value.length()) {
+                commaValue = "," + commaValue;
+            }
         }
         return commaValue;
     }
