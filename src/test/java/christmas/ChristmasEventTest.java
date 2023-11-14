@@ -82,4 +82,19 @@ public class ChristmasEventTest {
         assertThat(history.getDiscountAmount()).isEqualTo(1000);
     }
 
+    @DisplayName("평일 할인이 적용 되는지 확인")
+    @Test
+    void applyWeekdayDessertDiscount(){
+        DayDiscountEvent event = new DayDiscountEvent();
+        visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 5); // TUESDAY - WEEKEND
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.ICE_CREAM,3);
+
+        Receipt receipt = new Receipt(order);
+        DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
+
+        assertThat(history.explainName()).isEqualTo(WEEKDAY_DISCOUNT);
+        assertThat(history.getDiscountAmount()).isEqualTo(2023*3);
+    }
+
 }
