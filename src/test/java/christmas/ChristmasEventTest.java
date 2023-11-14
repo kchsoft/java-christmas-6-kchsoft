@@ -116,6 +116,18 @@ public class ChristmasEventTest {
         assertThat(history.getDiscountAmount()).isEqualTo(2023 * 6);
     }
 
+    @DisplayName("할인 전 총 금액 종합 확인")
+    @Test
+    void sumOriginalPrice(){
+        GiftEvent event = new GiftEvent();
+        Order order = new Order(visitingDay);
+        order.addMenu(Menu.MUSHROOM_SOUP,2);
+
+        Money originalPrice = order.sumOrderPrice();
+        assertThat(originalPrice.getAmount()).isEqualTo(12000);
+
+    }
+
     @DisplayName("증정 이벤트가 적용되는지 확인")
     @Test
     void applyGiftEvent(){
