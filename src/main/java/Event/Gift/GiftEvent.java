@@ -1,14 +1,14 @@
-package Event;
+package Event.Gift;
 
-import static Event.EventNameConstant.GIFT_EVENT;
+import static Event.Constant.EventNameConstant.GIFT_EVENT;
 
+import Event.Event;
+import Event.EventHistory;
 import christmas.Menu;
 import christmas.Money;
 import christmas.Order;
-import java.util.ArrayList;
-import java.util.List;
 
-public class GiftEvent implements Event<Order>{
+public class GiftEvent implements Event<Order> {
 
     private final Integer BASE_AMOUNT_OF_GIFT = 120000;
     private Menu gift;

@@ -1,4 +1,4 @@
-package christmas;
+package christmas.Constant;
 
 public class RestaurantMenuConstant {
     public static final String APPETIZER = "에피타이저";

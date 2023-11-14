@@ -1,4 +1,4 @@
-package Event;
+package Event.Constant;
 
 public class EventConstant {
     public static final Integer EVENT_MONTH = 12;

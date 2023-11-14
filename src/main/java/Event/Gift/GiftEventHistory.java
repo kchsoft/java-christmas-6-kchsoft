@@ -1,9 +1,9 @@
-package Event;
+package Event.Gift;
 
+import Event.EventHistory;
 import christmas.Menu;
-import java.util.List;
 
-public class GiftEventHistory implements EventHistory{
+public class GiftEventHistory implements EventHistory {
 
     private final String eventName;
     private Menu gift;

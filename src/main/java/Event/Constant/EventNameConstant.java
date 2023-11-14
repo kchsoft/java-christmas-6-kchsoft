@@ -1,4 +1,4 @@
-package Event;
+package Event.Constant;
 
 public class EventNameConstant {
     public static final String CHRISTMAS_D_DAY_DISCOUNT_EVENT = "크리스마스 디데이 할인";

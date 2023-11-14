@@ -1,10 +1,12 @@
-package Event;
+package Event.DayDiscount;
 
-import static Event.EventNameConstant.WEEKDAY_DISCOUNT;
-import static Event.EventNameConstant.WEEKEND_DISCOUNT;
-import static christmas.RestaurantMenuConstant.DESSERT;
-import static christmas.RestaurantMenuConstant.MAIN;
+import static Event.Constant.EventNameConstant.WEEKDAY_DISCOUNT;
+import static Event.Constant.EventNameConstant.WEEKEND_DISCOUNT;
+import static christmas.Constant.RestaurantMenuConstant.DESSERT;
+import static christmas.Constant.RestaurantMenuConstant.MAIN;
 
+import Event.Event;
+import Event.EventHistory;
 import christmas.Menu;
 import christmas.Money;
 import christmas.Order;

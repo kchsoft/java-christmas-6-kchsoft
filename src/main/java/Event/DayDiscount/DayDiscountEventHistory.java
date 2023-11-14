@@ -1,13 +1,14 @@
-package Event;
+package Event.DayDiscount;
 
+import Event.EventHistory;
 import christmas.Money;
 
-public class DateDiscountEventHistory implements EventHistory{
+public class DayDiscountEventHistory implements EventHistory {
 
     private final String eventName;
     private final Money discountAmount;
 
-    public DateDiscountEventHistory(String eventName,Money discountAmount){
+    public DayDiscountEventHistory(String eventName,Money discountAmount){
         this.eventName = eventName;
         this.discountAmount = discountAmount;
     }
@@ -22,7 +23,7 @@ public class DateDiscountEventHistory implements EventHistory{
         return discountAmount.toString();
     }
 
-    public Integer getDiscountAmount() {
-        return discountAmount.getAmount() ;
+    public Integer getDiscountAmount(){
+        return discountAmount.getAmount();
     }
 }

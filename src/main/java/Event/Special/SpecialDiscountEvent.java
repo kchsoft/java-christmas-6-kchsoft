@@ -1,11 +1,13 @@
-package Event;
+package Event.Special;
 
-import static Event.EventConstant.CHRISTMAS_DATE;
-import static Event.EventConstant.EVENT_MONTH;
-import static Event.EventConstant.EVENT_START_DATE;
-import static Event.EventConstant.EVENT_YEAR;
-import static Event.EventNameConstant.SPECIAL_DISCOUNT;
+import static Event.Constant.EventConstant.CHRISTMAS_DATE;
+import static Event.Constant.EventConstant.EVENT_MONTH;
+import static Event.Constant.EventConstant.EVENT_START_DATE;
+import static Event.Constant.EventConstant.EVENT_YEAR;
+import static Event.Constant.EventNameConstant.SPECIAL_DISCOUNT;
 
+import Event.Event;
+import Event.EventHistory;
 import christmas.Money;
 import christmas.Order;
 import java.time.DayOfWeek;
@@ -13,7 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpecialDiscountEvent implements Event<Order>{
+public class SpecialDiscountEvent implements Event<Order> {
     List<Integer> specialSheet;
     private final Integer SPECIAL_DISCOUNT_AMOUNT = 1000;
 

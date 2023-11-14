@@ -1,19 +1,19 @@
 package christmas;
 
-import static Event.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
-import static Event.EventConstant.EVENT_MONTH;
-import static Event.EventConstant.EVENT_YEAR;
-import static Event.EventNameConstant.SPECIAL_DISCOUNT;
-import static Event.EventNameConstant.WEEKDAY_DISCOUNT;
-import static Event.EventNameConstant.WEEKEND_DISCOUNT;
+import static Event.Constant.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
+import static Event.Constant.EventConstant.EVENT_MONTH;
+import static Event.Constant.EventConstant.EVENT_YEAR;
+import static Event.Constant.EventNameConstant.SPECIAL_DISCOUNT;
+import static Event.Constant.EventNameConstant.WEEKDAY_DISCOUNT;
+import static Event.Constant.EventNameConstant.WEEKEND_DISCOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import Event.DateDiscountEvent;
-import Event.DateDiscountEventHistory;
-import Event.DayDiscountEvent;
-import Event.DayDiscountEventHistory;
-import Event.SpecialDiscountEvent;
-import Event.SpecialDiscountEventHistory;
+import Event.DateDiscount.DateDiscountEvent;
+import Event.DateDiscount.DateDiscountEventHistory;
+import Event.DayDiscount.DayDiscountEvent;
+import Event.DayDiscount.DayDiscountEventHistory;
+import Event.Special.SpecialDiscountEvent;
+import Event.Special.SpecialDiscountEventHistory;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;

@@ -1,9 +1,9 @@
 package christmas;
 
-import Event.DateDiscountEvent;
-import Event.DayDiscountEvent;
-import Event.GiftEvent;
-import Event.SpecialDiscountEvent;
+import Event.DateDiscount.DateDiscountEvent;
+import Event.DayDiscount.DayDiscountEvent;
+import Event.Gift.GiftEvent;
+import Event.Special.SpecialDiscountEvent;
 import java.time.LocalDate;
 
 public class Application {

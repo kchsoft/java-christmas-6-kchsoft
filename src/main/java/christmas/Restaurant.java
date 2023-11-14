@@ -1,7 +1,7 @@
 package christmas;
 
-import static Event.EventConstant.EVENT_MONTH;
-import static Event.EventConstant.EVENT_YEAR;
+import static Event.Constant.EventConstant.EVENT_MONTH;
+import static Event.Constant.EventConstant.EVENT_YEAR;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.time.LocalDate;

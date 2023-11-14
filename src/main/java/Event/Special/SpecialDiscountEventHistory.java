@@ -1,8 +1,9 @@
-package Event;
+package Event.Special;
 
+import Event.EventHistory;
 import christmas.Money;
 
-public class SpecialDiscountEventHistory implements EventHistory{
+public class SpecialDiscountEventHistory implements EventHistory {
 
     private final String eventName;
     private final Money discountAmount;
