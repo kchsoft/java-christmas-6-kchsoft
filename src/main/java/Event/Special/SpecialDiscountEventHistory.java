@@ -3,7 +3,7 @@ package Event.Special;
 import Event.EventHistory;
 import christmas.Money;
 
-public class SpecialDiscountEventHistory implements EventHistory {
+public class SpecialDiscountEventHistory implements EventHistory<Money> {
 
     private final String eventName;
     private final Money discountAmount;
@@ -23,7 +23,12 @@ public class SpecialDiscountEventHistory implements EventHistory {
         return discountAmount.toString();
     }
 
-    public Integer getDiscountAmount() {
+    @Override
+    public Money getBenefit() {
+        return discountAmount;
+    }
+
+    public Integer getBenefitValue(){
         return discountAmount.getAmount();
     }
 
