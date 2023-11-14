@@ -1,10 +1,14 @@
 package christmas;
 
+import static Event.EventNameConstant.CHRISTMAS_D_DAY_DISCOUNT_EVENT;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static christmas.EventConstant.EVENT_MONTH;
 import static christmas.EventConstant.EVENT_YEAR;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import Event.DateDiscountEvent;
+import Event.DateDiscountEventHistory;
+import Event.EventHistory;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -34,11 +38,11 @@ public class ChristmasEventTest {
 
     @DisplayName("주문이 올바르게 입력되었는지 확인")
     @Test
-    void checkOrderMenu(){
+    void checkOrderMenu() {
         Order order = new Order(visitingDay);
-        order.addFood(FoodMenu.BBQ_RIB,1);
-        order.addFood(FoodMenu.MUSHROOM_SOUP,3);
-        order.addFood(FoodMenu.ICE_CREAM,2);
+        order.addFood(FoodMenu.BBQ_RIB, 1);
+        order.addFood(FoodMenu.MUSHROOM_SOUP, 3);
+        order.addFood(FoodMenu.ICE_CREAM, 2);
 
         assertThat(order.getNumberOfMenu(FoodMenu.BBQ_RIB)).isEqualTo(1);
         assertThat(order.getNumberOfMenu(FoodMenu.BBQ_RIB)).isNotEqualTo(0);
@@ -47,6 +51,19 @@ public class ChristmasEventTest {
         assertThat(order.getNumberOfMenu(FoodMenu.MUSHROOM_SOUP)).isEqualTo(3);
         assertThat(order.getNumberOfMenu(FoodMenu.ICE_CREAM)).isEqualTo(2);
         assertThat(order.getNumberOfMenu(FoodMenu.RED_WINE)).isEqualTo(0);
+    }
+
+    @DisplayName("d-day 할인이 적용 되는지 확인")
+    @Test
+    void checkD_DayEventDiscountAmount(){
+        DateDiscountEvent event = new DateDiscountEvent();
+        Order order = new Order(visitingDay);
+        Receipt receipt = new Receipt(order);
+        DateDiscountEventHistory history = (DateDiscountEventHistory)event.apply(order);
+
+        assertThat(history.explainName()).isEqualTo(CHRISTMAS_D_DAY_DISCOUNT_EVENT);
+        assertThat(history.getDiscountAmount()).isEqualTo(2300); // day is 14
+
     }
 
 }
