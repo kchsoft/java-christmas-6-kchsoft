@@ -38,9 +38,11 @@ public class BadgeEvent implements Event<Receipt> {
     private String setBadge(Money benefitAmount){
         if (benefitAmount.getAmount() >= SANTA_AMOUNT) {
             return SANTA;
-        } else if (benefitAmount.getAmount() >= TREE_AMOUNT) {
+        }
+        if (benefitAmount.getAmount() >= TREE_AMOUNT) {
             return TREE;
-        } else if (benefitAmount.getAmount() >= STAR_AMOUNT) {
+        }
+        if (benefitAmount.getAmount() >= STAR_AMOUNT) {
             return STAR;
         }
         return null;
