@@ -33,7 +33,7 @@ public class Application {
         BadgeEvent badgeEvent = new BadgeEvent();
         receipt.addHistory(badgeEvent.apply(receipt));
 
-        OutputView.printOrderMenu(order);
+        OutputView.showOrderHistory(order);
     }
 
 }
