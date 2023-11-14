@@ -2,7 +2,9 @@ package christmas;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Order {
     private HashMap<Menu,Integer> sheet; // Menu name , Menu count
@@ -26,6 +28,16 @@ public class Order {
             return sheet.get(menu);
         }
         return 0;
+    }
+
+    public List<Menu> getMenusOfType(String type){
+        List<Menu> menus = new ArrayList<>();
+        for (Menu oneMenu : Menu.values()) {
+            if (oneMenu.getType() == type) {
+                menus.add(oneMenu);
+            }
+        }
+        return menus;
     }
 
 

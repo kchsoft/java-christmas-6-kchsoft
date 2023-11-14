@@ -1,6 +1,7 @@
 package christmas;
 
 import Event.DateDiscountEvent;
+import Event.DayDiscountEvent;
 import Event.SpecialDiscountEvent;
 import java.time.LocalDate;
 
@@ -18,6 +19,9 @@ public class Application {
 
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent();
         receipt.addHistory(specialDiscountEvent.apply(order));
+
+        DayDiscountEvent dayDiscountEvent = new DayDiscountEvent();
+        receipt.addHistory(dateDiscountEvent.apply(order));
     }
 
 }
