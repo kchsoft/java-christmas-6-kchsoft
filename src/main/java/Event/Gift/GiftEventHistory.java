@@ -3,7 +3,7 @@ package Event.Gift;
 import Event.EventHistory;
 import christmas.Menu;
 
-public class GiftEventHistory implements EventHistory {
+public class GiftEventHistory implements EventHistory<Menu> {
 
     private final String eventName;
     private Menu gift;
@@ -23,7 +23,8 @@ public class GiftEventHistory implements EventHistory {
         return gift.getName();
     }
 
-    public Menu getGift(){
+    @Override
+    public Menu getBenefit(){
         return gift;
     }
 }

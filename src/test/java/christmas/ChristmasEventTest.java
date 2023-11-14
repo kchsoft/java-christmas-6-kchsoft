@@ -69,7 +69,7 @@ public class ChristmasEventTest {
         DateDiscountEventHistory history = (DateDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(CHRISTMAS_D_DAY_DISCOUNT_EVENT);
-        assertThat(history.getDiscountAmount()).isEqualTo(2300); // day is 14
+        assertThat(history.getBenefitValue()).isEqualTo(2300); // day is 14
 
     }
 
@@ -98,7 +98,7 @@ public class ChristmasEventTest {
         DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(WEEKDAY_DISCOUNT);
-        assertThat(history.getDiscountAmount()).isEqualTo(2023 * 3);
+        assertThat(history.getBenefitValue()).isEqualTo(2023 * 3);
     }
 
     @DisplayName("주말 할인이 적용 되는지 확인")
@@ -113,7 +113,7 @@ public class ChristmasEventTest {
         DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(WEEKEND_DISCOUNT);
-        assertThat(history.getDiscountAmount()).isEqualTo(2023 * 6);
+        assertThat(history.getBenefitValue()).isEqualTo(2023 * 6);
     }
 
     @DisplayName("할인 전 총 금액 종합 확인")
@@ -140,8 +140,8 @@ public class ChristmasEventTest {
         GiftEventHistory history = (GiftEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(GIFT_EVENT);
-        assertThat(history.getGift()).isEqualTo(Menu.CHAMPAGNE);
-        assertThat(history.getGift().getPrice()).isEqualTo(Menu.CHAMPAGNE.getPrice());
+        assertThat(history.getBenefit()).isEqualTo(Menu.CHAMPAGNE);
+        assertThat(history.getBenefit().getPrice()).isEqualTo(Menu.CHAMPAGNE.getPrice());
 
     }
 
