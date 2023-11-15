@@ -49,8 +49,8 @@ public class Restaurant {
     }
 
     private Receipt applyChristmasEvent(Order order){
-        Money originalPirce = order.sumPrice();
-        if( originalPirce.getAmount() >= EVENT_BASE_AMOUNT){
+        Money originalPrice = order.sumPrice();
+        if( originalPrice.getAmount() >= EVENT_BASE_AMOUNT){
             ChristmasEvent event = new ChristmasEvent();
             return event.applyAllEvent(order);
         }
