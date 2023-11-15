@@ -9,6 +9,7 @@ import View.OrderOutputView;
 import View.ReceiptOutputView;
 import christmas.Converter.Converter;
 import christmas.Validator.EventValidator;
+import christmas.Validator.MenuValidator;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -38,13 +39,10 @@ public class Restaurant {
     private Order orderMenu(LocalDate visitingDay){
         List<String> orderMenus = null;
         Order order = new Order(visitingDay);
-
         while (orderMenus == null) {
             try {
                 orderMenus = InputView.askMenu();
                 order.addMenus(orderMenus);
-                EventValidator.checkMaxMenuNumber(order);
-                EventValidator.checkOnlyBeverageOrder(order);
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(illegalArgumentException.getMessage());
                 orderMenus = null;

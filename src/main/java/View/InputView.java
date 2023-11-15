@@ -10,6 +10,8 @@ import static christmas.Constant.MsgConstantPiece.LINE_BREAKER;
 import camp.nextstep.edu.missionutils.Console;
 import christmas.Converter.Converter;
 import christmas.Validator.EventValidator;
+import christmas.Validator.IntegerValidator;
+import christmas.Validator.MenuValidator;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -27,14 +29,8 @@ public class InputView {
     public static List<String> askMenu() throws IllegalArgumentException{
         System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1");
         String orderMenu = Console.readLine();
-        List<String> orderMenus = Arrays.asList(orderMenu.split(COMMA));
 
-        for (String oneMenu : orderMenus) {
-            List<String> nameAndNumber = Arrays.asList(oneMenu.split(DASH));
-            EventValidator.checkMenuName(nameAndNumber.get(0));
-            EventValidator.checkPositiveInteger(nameAndNumber.get(1));
-        }
-        return orderMenus;
+        return Converter.convertCommaStringToList(orderMenu);
     }
 
 }
