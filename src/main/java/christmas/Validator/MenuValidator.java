@@ -58,16 +58,33 @@ public class MenuValidator {
         }
     }
 
-    public static void checkOrderCunt(String value) throws IllegalArgumentException {
+    public static void checkOrderCount(String value) throws IllegalArgumentException {
+        checkZero(value);
+        checkNumber(value);
+        checkMaxInt(value);
+    }
+
+    private static void checkZero(String value) throws IllegalArgumentException{
         if (value.length() == 1 && value.charAt(0) == '0') {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
+    }
+
+    private static void checkNumber(String value) throws IllegalArgumentException{
         for (char oneValue : value.toCharArray()) {
             if(oneValue < '0' || oneValue > '9'){
                 throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
             }
         }
+    }
+
+    private static void checkMaxInt(String value) throws IllegalArgumentException{
+        Long bigValue = Long.valueOf(value);
+        if (bigValue > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
 
     }
+
 
 }
