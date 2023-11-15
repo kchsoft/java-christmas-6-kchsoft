@@ -58,4 +58,16 @@ public class MenuValidator {
         }
     }
 
+    public static void checkOrderCunt(String value) throws IllegalArgumentException {
+        if (value.length() == 1 && value.charAt(0) == '0') {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+        for (char oneValue : value.toCharArray()) {
+            if(oneValue < '0' || oneValue > '9'){
+                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
+        }
+
+    }
+
 }
