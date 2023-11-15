@@ -51,7 +51,7 @@ public class OutputView {
 
     public static void showBenefitAmount(Receipt receipt){
         showEachBenefit(receipt);
-//        printSumBenefit();
+        printSumBenefit(receipt);
 
     }
 
@@ -76,8 +76,16 @@ public class OutputView {
             }
             Menu giftMenu = ((Menu) oneHistory.getBenefit());
             Money giftPrice = new Money(giftMenu.getPriceValue());
-            System.out.println(oneHistory.explainName() + COLON + BLANK + MINUS + giftPrice.toString() );
+            System.out.println(oneHistory.explainName() + COLON + BLANK + MINUS + giftPrice.toString());
         }
+    }
+
+    public static void printSumBenefit(Receipt receipt){
+        System.out.println(LINE_BREAKER + "<총혜택 금액>");
+        Money sum = new Money();
+        sum.add(receipt.getDiscountAmount());
+        sum.add(receipt.getGiftAmount());
+        System.out.println(MINUS+sum.toString()+WON);
     }
 
 }
