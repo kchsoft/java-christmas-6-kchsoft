@@ -7,6 +7,8 @@ import static christmas.Constant.RestaurantMenuConstant.BEVERAGE;
 
 import christmas.Menu;
 import christmas.Order;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +37,7 @@ public class MenuValidator {
     }
 
     public static void checkMenuFormat(String value) throws IllegalArgumentException{
-        String regex = "^(\\w+-[0-9]+)$";
+        String regex = "[가-힣a-zA-Z]+-[0-9]+";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(value);
         if (!matcher.matches()) {
