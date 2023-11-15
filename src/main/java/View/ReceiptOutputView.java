@@ -5,8 +5,12 @@ import static christmas.Constant.MsgConstantPiece.COLON;
 import static christmas.Constant.MsgConstantPiece.LINE_BREAKER;
 import static christmas.Constant.MsgConstantPiece.MINUS;
 import static christmas.Constant.MsgConstantPiece.NO_EXIST;
-import static christmas.Constant.MsgConstantPiece.UNIT;
 import static christmas.Constant.MsgConstantPiece.WON;
+import static christmas.Constant.OutputMsgConstant.MSG_BENEFIT_HISTORY;
+import static christmas.Constant.OutputMsgConstant.MSG_FINAL_PRICE;
+import static christmas.Constant.OutputMsgConstant.MSG_GIFT_MENU;
+import static christmas.Constant.OutputMsgConstant.MSG_ONE_GIFT_UNIT;
+import static christmas.Constant.OutputMsgConstant.MSG_SUM_BENEFIT_AMUOUNT;
 
 import Event.EventHistory;
 import christmas.Menu;
@@ -27,12 +31,12 @@ public class ReceiptOutputView {
     }
 
     public static void printGiftMenu(Receipt receipt) {
-        System.out.println(LINE_BREAKER+"<증정 메뉴>");
+        System.out.println(LINE_BREAKER+MSG_GIFT_MENU);
         if (receipt.getGiftName() == null) {
             System.out.println(NO_EXIST);
             return;
         }
-        System.out.println(receipt.getGiftName()+BLANK+1+UNIT);
+        System.out.println(receipt.getGiftName()+MSG_ONE_GIFT_UNIT);
     }
 
     public static void showBenefitAmount(Receipt receipt){
@@ -42,7 +46,7 @@ public class ReceiptOutputView {
     }
 
     public static void showEachBenefit(Receipt receipt){
-        System.out.println(LINE_BREAKER+"<혜택 내역>");
+        System.out.println(LINE_BREAKER+MSG_BENEFIT_HISTORY);
         printDiscountBenefit(receipt.getHistory());
         printGiftBenefit(receipt.getHistory());
         if (hasBenefit == false) {
@@ -72,7 +76,7 @@ public class ReceiptOutputView {
     }
 
     public static void printSumBenefit(Receipt receipt){
-        System.out.println(LINE_BREAKER + "<총혜택 금액>");
+        System.out.println(LINE_BREAKER + MSG_SUM_BENEFIT_AMUOUNT);
         Money sum = new Money();
         sum.add(receipt.getDiscountAmount());
         sum.add(receipt.getGiftAmount());
@@ -85,7 +89,7 @@ public class ReceiptOutputView {
     }
 
     public static void printFinalPrice(Receipt receipt, Order order) {
-        System.out.println(LINE_BREAKER+"<할인 후 예상 결제 금액>");
+        System.out.println(LINE_BREAKER+MSG_FINAL_PRICE);
         Money finalPrice = order.sumPrice();
         finalPrice.subtract(receipt.getDiscountAmount());
         System.out.println(finalPrice.toString() + WON);
