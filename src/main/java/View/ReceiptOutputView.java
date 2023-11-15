@@ -17,6 +17,8 @@ import java.util.List;
 
 public class ReceiptOutputView {
 
+    private static Boolean hasBenefit = false;
+
     public static void showReceiptHistory(Receipt receipt,Order order){
         printGiftMenu(receipt);
         showBenefitAmount(receipt);
@@ -41,14 +43,13 @@ public class ReceiptOutputView {
 
     public static void showEachBenefit(Receipt receipt){
         System.out.println(LINE_BREAKER+"<혜택 내역>");
-        Boolean hasBenefit = false;
-        printDiscountBenefit(receipt.getHistory(),hasBenefit);
-        printGiftBenefit(receipt.getHistory(),hasBenefit);
+        printDiscountBenefit(receipt.getHistory());
+        printGiftBenefit(receipt.getHistory());
         if (hasBenefit == false) {
             System.out.println(NO_EXIST);
         }
     }
-    public static void printDiscountBenefit(List<EventHistory> history,Boolean hasBenefit){
+    public static void printDiscountBenefit(List<EventHistory> history){
         for (EventHistory oneHistory : history) {
             if (oneHistory == null || !(oneHistory.getBenefit() instanceof Money)) {
                 continue;
@@ -58,7 +59,7 @@ public class ReceiptOutputView {
         }
     }
 
-    public static void printGiftBenefit(List<EventHistory> history,Boolean hasBenefit){
+    public static void printGiftBenefit(List<EventHistory> history){
         for (EventHistory oneHistory : history) {
             if (oneHistory == null || !(oneHistory.getBenefit() instanceof Menu)) {
                 continue;
