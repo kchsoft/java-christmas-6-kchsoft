@@ -8,7 +8,7 @@ import static christmas.Constant.MsgConstantPiece.DASH;
 import static christmas.Constant.MsgConstantPiece.LINE_BREAKER;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.Converter;
+import christmas.Converter.Converter;
 import christmas.Validator.EventValidator;
 import java.time.LocalDate;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package christmas;
+package christmas.Converter;
 
 import christmas.Validator.EventValidator;
 
