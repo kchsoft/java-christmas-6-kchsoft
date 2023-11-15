@@ -1,5 +1,8 @@
 package christmas;
 
+import static christmas.Constant.MsgConstantPiece.COMMA;
+import static christmas.Constant.MsgConstantPiece.EMPTY_STRING;
+
 public class Money {
     private Integer money;
 
@@ -25,12 +28,12 @@ public class Money {
 
     public String toString(){
         String value = String.valueOf(money);
-        String commaValue = "";
+        String commaValue = EMPTY_STRING;
 
         for (Integer Index =  1; Index <= value.length(); Index++) {
             commaValue = value.charAt(value.length() - Index) + commaValue;
             if (Index % 3 == 0 && Index < value.length()) {
-                commaValue = "," + commaValue;
+                commaValue = COMMA + commaValue;
             }
         }
         return commaValue;

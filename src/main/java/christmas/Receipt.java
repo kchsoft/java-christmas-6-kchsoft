@@ -1,5 +1,7 @@
 package christmas;
 
+import static christmas.Constant.MsgConstantPiece.EMPTY_STRING;
+
 import Event.EventHistory;
 import Event.Gift.GiftEventHistory;
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class Receipt {
         Money giftAmount = new Money();
         Menu giftMenu = findGiftMenu();
         if (giftMenu == null) {
-            return "";
+            return EMPTY_STRING;
         }
         return giftMenu.getName();
     }

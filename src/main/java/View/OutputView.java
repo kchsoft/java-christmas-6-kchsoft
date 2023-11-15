@@ -2,7 +2,9 @@ package View;
 
 import static christmas.Constant.MsgConstantPiece.BLANK;
 import static christmas.Constant.MsgConstantPiece.COLON;
+import static christmas.Constant.MsgConstantPiece.LINE_BREAKER;
 import static christmas.Constant.MsgConstantPiece.MINUS;
+import static christmas.Constant.MsgConstantPiece.UNIT;
 import static christmas.Constant.MsgConstantPiece.WON;
 
 import Event.EventHistory;
@@ -28,13 +30,13 @@ public class OutputView {
         }
     }
     public static void printOneMenu(Menu menu, Integer menuCount) {
-        System.out.println(menu.getName() + " " +menuCount + "개");
+        System.out.println(menu.getName() + BLANK +menuCount + UNIT);
     }
 
     public static void printOriginalPrice(Order order){
-        System.out.println("\n<할인 전 총주문 금액>");
+        System.out.println(LINE_BREAKER+"<할인 전 총주문 금액>");
         Money originalPrice = order.sumPrice();
-        System.out.println(originalPrice.toString()+"원");
+        System.out.println(originalPrice.toString()+WON);
     }
 
     public static void showReceiptHistory(Receipt receipt){
@@ -43,8 +45,8 @@ public class OutputView {
     }
 
     public static void printGiftMenu(Receipt receipt) {
-        System.out.println("\n<증정 메뉴>");
-        System.out.println(receipt.getGiftName()+ " 1개");
+        System.out.println(LINE_BREAKER+"<증정 메뉴>");
+        System.out.println(receipt.getGiftName()+BLANK+1+UNIT);
     }
 
     public static void showBenefitAmount(Receipt receipt){
@@ -54,7 +56,7 @@ public class OutputView {
     }
 
     public static void showEachBenefit(Receipt receipt){
-        System.out.println("<혜택 내역>");
+        System.out.println(LINE_BREAKER+"<혜택 내역>");
         printDiscountBenefit(receipt.getHistory());
         printGiftBenefit(receipt.getHistory());
     }
