@@ -60,4 +60,8 @@ public class Receipt {
         return null;
     }
 
+    public List<EventHistory> getHistory(){
+        return new ArrayList<>(history);
+    }
+
 }
