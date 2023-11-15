@@ -22,7 +22,7 @@ public class Receipt {
         Money discountAmount = new Money();
 
         for (EventHistory oneHistory : history) {
-            if( oneHistory == null || oneHistory instanceof GiftEventHistory){
+            if( oneHistory == null || !(oneHistory.getBenefit() instanceof Money)){
                 continue;
             }
             discountAmount.add((Money)oneHistory.getBenefit());
