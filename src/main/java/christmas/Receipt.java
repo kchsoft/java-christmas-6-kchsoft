@@ -64,4 +64,16 @@ public class Receipt {
         return new ArrayList<>(history);
     }
 
+    public EventHistory getHistory(String eventName){
+        for (EventHistory oneHistory : history) {
+            if (oneHistory == null) {
+                continue;
+            }
+            if (oneHistory.explainName().equals(eventName)) {
+                return oneHistory;
+            }
+        }
+        return null;
+    }
+
 }

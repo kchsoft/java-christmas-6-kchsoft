@@ -1,5 +1,6 @@
 package View;
 
+import static Event.Constant.EventNameConstant.DECEMBER_EVENT_BADGE;
 import static christmas.Constant.MsgConstantPiece.BLANK;
 import static christmas.Constant.MsgConstantPiece.COLON;
 import static christmas.Constant.MsgConstantPiece.LINE_BREAKER;
@@ -98,16 +99,13 @@ public class ReceiptOutputView {
     public static void printBadgeHistory(Receipt receipt) {
         System.out.println(LINE_BREAKER + "<12월 이벤트 배지>");
         Boolean hasBadge = false;
-        for (EventHistory oneHistory : receipt.getHistory()) {
-            if (oneHistory == null || !(oneHistory.getBenefit() instanceof String)) {
-                continue;
-            }
-            hasBadge = true;
-            System.out.println(oneHistory.getBenefit());
-        }
-        if (hasBadge == false) {
+        EventHistory history = receipt.getHistory(DECEMBER_EVENT_BADGE);
+        if (history == null) {
             System.out.println(NO_EXIST);
+            return;
         }
+        System.out.println(history.getBenefit());
+
     }
 
 }
