@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
-    private Order order;
     private List<EventHistory> history;
 
-    public Receipt(Order order){
-        this.order = order;
+    public Receipt(){
         history = new ArrayList<>();
     }
 
@@ -64,10 +62,6 @@ public class Receipt {
 
     public List<EventHistory> getHistory(){
         return new ArrayList<>(history);
-    }
-
-    public Money findOriginalPrice(){
-        return order.sumPrice();
     }
 
 }

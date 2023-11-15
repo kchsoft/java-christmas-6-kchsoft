@@ -72,7 +72,7 @@ public class ChristmasEventTest {
     void applyD_DayDiscountEvent() {
         DateDiscountEvent event = new DateDiscountEvent();
         Order order = new Order(visitingDay);
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
         DateDiscountEventHistory history = (DateDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(CHRISTMAS_D_DAY_DISCOUNT_EVENT);
@@ -86,7 +86,7 @@ public class ChristmasEventTest {
         SpecialDiscountEvent event = new SpecialDiscountEvent();
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 3);
         Order order = new Order(visitingDay);
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
         SpecialDiscountEventHistory history = (SpecialDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(SPECIAL_DISCOUNT);
@@ -101,7 +101,7 @@ public class ChristmasEventTest {
         Order order = new Order(visitingDay);
         order.addMenu(Menu.ICE_CREAM, 3);
 
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
         DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(WEEKDAY_DISCOUNT);
@@ -116,7 +116,7 @@ public class ChristmasEventTest {
         Order order = new Order(visitingDay);
         order.addMenu(Menu.BBQ_RIB, 6);
 
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
         DayDiscountEventHistory history = (DayDiscountEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(WEEKEND_DISCOUNT);
@@ -143,7 +143,7 @@ public class ChristmasEventTest {
         order.addMenu(Menu.T_BONE_STEAK, 2);
         order.addMenu(Menu.CHOCOLATE_CAKE, 2); // over 12,000원
 
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
         GiftEventHistory history = (GiftEventHistory) event.apply(order);
 
         assertThat(history.explainName()).isEqualTo(GIFT_EVENT);
@@ -158,7 +158,7 @@ public class ChristmasEventTest {
         visitingDay = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
         Order order = new Order(visitingDay);
         order.addMenu(Menu.ICE_CREAM, 3);
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
 
         Event event = new DateDiscountEvent();
         receipt.addHistory(event.apply(order));
@@ -183,7 +183,7 @@ public class ChristmasEventTest {
         order.addMenu(Menu.ICE_CREAM, 10);
         order.addMenu(Menu.T_BONE_STEAK, 2); // over benefit 20,000
 
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
 
         event = new DateDiscountEvent();
         receipt.addHistory(event.apply(order));
@@ -211,7 +211,7 @@ public class ChristmasEventTest {
         order.addMenu(Menu.ICE_CREAM, 5);
         order.addMenu(Menu.T_BONE_STEAK, 2); // benefit 10,000 ~ 19,999
 
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
 
         event = new DateDiscountEvent();
         receipt.addHistory(event.apply(order));
@@ -238,7 +238,7 @@ public class ChristmasEventTest {
         Order order = new Order(visitingDay);
         order.addMenu(Menu.ICE_CREAM, 2); // benefit 5,000 ~ 9,999
 
-        Receipt receipt = new Receipt(order);
+        Receipt receipt = new Receipt();
 
         event = new DateDiscountEvent();
         receipt.addHistory(event.apply(order));

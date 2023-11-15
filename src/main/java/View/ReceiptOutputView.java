@@ -11,15 +11,16 @@ import static christmas.Constant.MsgConstantPiece.WON;
 import Event.EventHistory;
 import christmas.Menu;
 import christmas.Money;
+import christmas.Order;
 import christmas.Receipt;
 import java.util.List;
 
 public class ReceiptOutputView {
 
-    public static void showReceiptHistory(Receipt receipt){
+    public static void showReceiptHistory(Receipt receipt,Order order){
         printGiftMenu(receipt);
         showBenefitAmount(receipt);
-        printFinalPrice(receipt);
+        printFinalPrice(receipt,order);
         printBadgeHistory(receipt);
     }
 
@@ -81,9 +82,9 @@ public class ReceiptOutputView {
         System.out.println(MINUS + sum.toString() + WON);
     }
 
-    public static void printFinalPrice(Receipt receipt) {
+    public static void printFinalPrice(Receipt receipt, Order order) {
         System.out.println(LINE_BREAKER+"<할인 후 예상 결제 금액>");
-        Money finalPrice = receipt.findOriginalPrice();
+        Money finalPrice = order.sumPrice();
         finalPrice.subtract(receipt.getDiscountAmount());
         System.out.println(finalPrice.toString() + WON);
     }
