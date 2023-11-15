@@ -8,8 +8,8 @@ import static christmas.Constant.MsgConstantPiece.EMPTY_STRING;
 public class DayValidator {
 
     public static void checkDecemberDay(String value) throws IllegalArgumentException{
-        checkPositiveInt(value);
         checkEmptyValue(value);
+        checkPositiveInt(value);
         checkDayRange(value);
     }
 
