@@ -3,6 +3,7 @@ package View;
 import christmas.Menu;
 import christmas.Money;
 import christmas.Order;
+import christmas.Receipt;
 
 public class OutputView {
 
@@ -24,8 +25,18 @@ public class OutputView {
     }
 
     public static void printOriginalPrice(Order order){
-        System.out.println("\n할인 전 총주문 금액");
+        System.out.println("\n<할인 전 총주문 금액>");
         Money originalPrice = order.sumPrice();
-        System.out.println(originalPrice.toString());
+        System.out.println(originalPrice.toString()+"원");
     }
+
+    public static void showReceiptHistory(Receipt receipt){
+        printGiftMenu(receipt);
+    }
+
+    public static void printGiftMenu(Receipt receipt) {
+        System.out.println("\n<증정 메뉴>");
+        System.out.println(receipt.getGiftName()+ " 1개");
+    }
+
 }

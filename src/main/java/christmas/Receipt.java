@@ -32,17 +32,32 @@ public class Receipt {
 
     public Money getGiftAmount(){
         Money giftAmount = new Money();
+        Menu giftMenu = findGiftMenu();
+        if (giftMenu == null) {
+            return new Money();
+        }
+        return new Money(giftMenu.getPriceValue());
+    }
 
+    public String getGiftName(){
+        Money giftAmount = new Money();
+        Menu giftMenu = findGiftMenu();
+        if (giftMenu == null) {
+            return "";
+        }
+        return giftMenu.getName();
+    }
+
+    private Menu findGiftMenu(){
         for (EventHistory oneHistory : history) {
             if( oneHistory == null ){
                 continue;
             }
             if (oneHistory instanceof GiftEventHistory) {
-                Menu giftMenu = (Menu)oneHistory.getBenefit();
-                return new Money(giftMenu.getPriceValue());
+                return (Menu) oneHistory.getBenefit();
             }
         }
-        return new Money();
+        return null;
     }
 
 }

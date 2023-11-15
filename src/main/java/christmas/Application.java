@@ -34,6 +34,7 @@ public class Application {
         receipt.addHistory(badgeEvent.apply(receipt));
 
         OutputView.showOrderHistory(order);
+        OutputView.showReceiptHistory(receipt);
     }
 
 }
