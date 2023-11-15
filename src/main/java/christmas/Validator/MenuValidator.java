@@ -57,7 +57,6 @@ public class MenuValidator {
     private static void checkOrderCount(String value) throws IllegalArgumentException {
         checkZero(value);
         checkNumber(value);
-        checkMaxInt(value);
     }
 
     private static void checkZero(String value) throws IllegalArgumentException{
@@ -73,14 +72,5 @@ public class MenuValidator {
             }
         }
     }
-
-    private static void checkMaxInt(String value) throws IllegalArgumentException{
-        Long bigValue = Long.valueOf(value);
-        if (bigValue > Integer.MAX_VALUE) {
-            throw new IllegalArgumentException(ERROR_NOT_VALID_ORDER);
-        }
-
-    }
-
 
 }
