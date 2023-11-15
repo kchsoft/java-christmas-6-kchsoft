@@ -3,7 +3,7 @@ package christmas.Validator;
 import static Event.Constant.EventConstant.MAX_MENU_NUMBER;
 import static christmas.Constant.ErrorMsgConstant.ERROR_EXCEED_MAX_ORDER_NUMBER;
 import static christmas.Constant.ErrorMsgConstant.ERROR_NOT_VALID_ORDER;
-import static christmas.Constant.ErrorMsgConstant.ERROR_ONLY_BERVAGE_ORDER_NOT_ALLOW;
+import static christmas.Constant.ErrorMsgConstant.ERROR_ONLY_BEVERAGE_ORDER_NOT_ALLOW;
 import static christmas.Constant.RestaurantMenuConstant.BEVERAGE;
 
 import christmas.Menu;
@@ -30,7 +30,7 @@ public class MenuValidator {
                 return;
             }
         }
-        throw new IllegalArgumentException(ERROR_ONLY_BERVAGE_ORDER_NOT_ALLOW);
+        throw new IllegalArgumentException(ERROR_ONLY_BEVERAGE_ORDER_NOT_ALLOW);
     }
 
     public static void checkMenuFormat(String value) throws IllegalArgumentException{
