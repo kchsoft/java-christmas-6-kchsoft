@@ -35,6 +35,7 @@ public class Restaurant {
                 orderMenus = InputView.askMenu();
                 order.addMenus(orderMenus);
                 EventValidator.checkMaxMenuNumber(order);
+                EventValidator.checkOnlyBeverageOrder(order);
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(illegalArgumentException.getMessage());
                 orderMenus = null;

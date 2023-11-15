@@ -2,7 +2,6 @@ package christmas;
 
 import static christmas.Constant.MsgConstantPiece.DASH;
 
-import christmas.Converter.Converter;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
