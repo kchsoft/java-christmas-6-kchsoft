@@ -8,6 +8,7 @@ import static christmas.Constant.RestaurantMenuConstant.BEVERAGE;
 
 import christmas.Menu;
 import christmas.Order;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,12 +34,15 @@ public class EventValidator {
     }
 
     public static void checkMenuInfo(List<String> orderMenus) throws IllegalArgumentException{
+        List<String> checkValue = new ArrayList<>();
         for (String oneMenu : orderMenus) {
             MenuValidator.checkMenuFormat(oneMenu);
             List<String> nameAndNumber = Arrays.asList(oneMenu.split(DASH));
             MenuValidator.checkMenuName(nameAndNumber.get(0));
             IntegerValidator.checkPositiveNumber(nameAndNumber.get(1));
+            checkValue.add(nameAndNumber.get(0));
         }
+        MenuValidator.checkDuplication(checkValue);
     }
 
 

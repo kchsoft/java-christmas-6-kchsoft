@@ -45,4 +45,14 @@ public class MenuValidator {
         }
     }
 
+    public static void checkDuplication(List<String> checkValue){
+        String deletedValue;
+        while (checkValue.size() > 0) {
+            deletedValue = checkValue.remove(0);
+            if (checkValue.contains(deletedValue)) {
+                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
+        }
+    }
+
 }
