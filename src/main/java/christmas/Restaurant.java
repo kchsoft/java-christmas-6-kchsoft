@@ -1,17 +1,13 @@
 package christmas;
 
 import static Event.Constant.EventConstant.EVENT_BASE_AMOUNT;
-import static christmas.Constant.MsgConstantPiece.DASH;
 
 import Event.ChristmasEvent;
 import View.InputView;
 import View.OrderOutputView;
 import View.ReceiptOutputView;
-import christmas.Converter.Converter;
-import christmas.Validator.EventValidator;
-import christmas.Validator.MenuValidator;
+import christmas.Validator.OrderValidator;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 public class Restaurant {
@@ -43,6 +39,7 @@ public class Restaurant {
             try {
                 orderMenus = InputView.askMenu();
                 order.addMenus(orderMenus);
+                OrderValidator.checkOrderInfo(order);
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(illegalArgumentException.getMessage());
                 orderMenus = null;
