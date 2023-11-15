@@ -1,5 +1,7 @@
 package christmas.Validator;
 
+import static Event.Constant.EventConstant.DAY_DISCOUNT_EVENT_FINAL_DATE;
+import static Event.Constant.EventConstant.EVENT_START_DATE;
 import static Event.Constant.EventConstant.MAX_MENU_NUMBER;
 import static christmas.Constant.RestaurantMenuConstant.BEVERAGE;
 
@@ -8,7 +10,10 @@ import christmas.Order;
 
 public class EventValidator {
 
-    public static void checkDecemberDay(Integer day){
+    public static void checkDecemberDay(Integer day) throws IllegalArgumentException{
+        if(day < EVENT_START_DATE || day > DAY_DISCOUNT_EVENT_FINAL_DATE){
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요");
+        }
     }
 
     public static void checkMenuName(String name) {

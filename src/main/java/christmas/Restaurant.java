@@ -24,13 +24,13 @@ public class Restaurant {
 
     private LocalDate setVisitngDay(){
         LocalDate date = null;
-        try {
-            while (date == null) {
+        while (date == null) {
+            try {
                 date = InputView.askVisitingDay();
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(illegalArgumentException.getMessage());
+                date = null;
             }
-        } catch (IllegalArgumentException illegalArgumentException) {
-            System.out.println(illegalArgumentException.getMessage());
-            date = null;
         }
         return date;
     }

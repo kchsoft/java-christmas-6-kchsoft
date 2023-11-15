@@ -6,14 +6,14 @@ import christmas.Validator.IntegerValidator;
 public class Converter {
 
     public static Integer convertStringToDecemberDay(String value) throws IllegalArgumentException{
-        Integer date = convertStringToInt(value);
+        Integer date = convertStringToPositiveInt(value);
         EventValidator.checkDecemberDay(date);
         return date;
     }
 
-    public static Integer convertStringToInt(String value) throws IllegalArgumentException{
+    public static Integer convertStringToPositiveInt(String value) throws IllegalArgumentException{
         IntegerValidator.checkEmptyValue(value);
-
+        IntegerValidator.checkPositiveNumber(value);
         return Integer.valueOf(value);
     }
 
