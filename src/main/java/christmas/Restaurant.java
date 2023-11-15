@@ -1,47 +1,49 @@
 package christmas;
 
-import static Event.Constant.EventConstant.EVENT_MONTH;
-import static Event.Constant.EventConstant.EVENT_YEAR;
-import static christmas.Constant.MsgConstantPiece.COMMA;
 import static christmas.Constant.MsgConstantPiece.DASH;
 
+import Event.ChristmasEvent;
 import View.InputView;
-import camp.nextstep.edu.missionutils.Console;
+import View.OrderOutputView;
+import View.ReceiptOutputView;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public class Restaurant {
 
-    public LocalDate expectVisitngDay(){
-
-        Integer date = InputView.readVisitingDay();
-        return setVisitingDay(date);
+    public void startBusiness(){
+        LocalDate visitingDay = setVisitngDay();
+        Order order = orderMenu(visitingDay);
+        Receipt receipt = applyChristmasEvent(order);
+        showEventHistory(receipt,order);
     }
 
-    private LocalDate setVisitingDay(Integer date){
-        return LocalDate.of(EVENT_YEAR,EVENT_MONTH,date);
+    private LocalDate setVisitngDay(){
+        return InputView.askVisitingDay();
     }
 
-    public Order orderMenu(LocalDate visitingDay){
-        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1");
-        String orderMenu = Console.readLine();
-        String[] orderMenus = orderMenu.split(COMMA);
+    private Order orderMenu(LocalDate visitingDay){
+        List<String> orderMenus = InputView.askMenu();
         Order order = new Order(visitingDay);
 
-        for (String oneMenu : orderMenus) {
-            String[] orderFormat = oneMenu.split(DASH);
-            Menu menu = findMenu(orderFormat);
-            order.addMenu(menu,Integer.valueOf(orderFormat[1]));
+        for (String orderMenu : orderMenus) {
+            List<String> nameAndNumber = Arrays.asList(orderMenu.split(DASH));
+            Menu menu = Menu.findMenu(nameAndNumber.get(0));
+            Integer number = Converter.convertStringToInt(nameAndNumber.get(1));
+            order.addMenu(menu,number);
         }
         return order;
     }
 
-    private Menu findMenu(String[] orderFormat){
-        for(Menu menu : Menu.values()){
-            if(menu.getName().equals(orderFormat[0])) {
-                return menu;
-            }
-        }
-        return null;
+    private Receipt applyChristmasEvent(Order order){
+        ChristmasEvent event = new ChristmasEvent();
+        return event.applyAllEvent(order);
+    }
+
+    private void showEventHistory(Receipt receipt,Order order){
+        OrderOutputView.showOrderHistory(order);
+        ReceiptOutputView.showReceiptHistory(receipt,order);
     }
 
 }

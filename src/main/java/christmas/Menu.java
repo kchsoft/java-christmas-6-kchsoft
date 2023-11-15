@@ -41,4 +41,13 @@ public enum Menu {
         return price;
     }
 
+    public static Menu findMenu(String menuName){
+        for(Menu menu : Menu.values()){
+            if(menu.getName().equals(menuName)) {
+                return menu;
+            }
+        }
+        return null;
+    }
+
 }
