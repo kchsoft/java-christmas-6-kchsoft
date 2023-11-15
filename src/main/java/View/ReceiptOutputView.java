@@ -19,6 +19,7 @@ public class ReceiptOutputView {
         printGiftMenu(receipt);
         showBenefitAmount(receipt);
         printFinalPrice(receipt);
+        printBadgeHistory(receipt);
     }
 
     public static void printGiftMenu(Receipt receipt) {
@@ -72,5 +73,14 @@ public class ReceiptOutputView {
         System.out.println(finalPrice.toString() + WON);
     }
 
+    public static void printBadgeHistory(Receipt receipt) {
+        System.out.println(LINE_BREAKER + "<12월 이벤트 배지>");
+        for (EventHistory oneHistory : receipt.getHistory()) {
+            if (oneHistory == null || !(oneHistory.getBenefit() instanceof String)) {
+                continue;
+            }
+            System.out.println(oneHistory.getBenefit());
+        }
+    }
 
 }
