@@ -14,9 +14,6 @@ import java.util.regex.Pattern;
 
 public class MenuValidator {
 
-    public static void checkMenuName(String name) {
-    }
-
     public static void checkMaxMenuNumber(Order order) throws IllegalArgumentException{
         Integer orderCount = 0;
         for (Menu menu : order.getMenus()) {
@@ -45,13 +42,19 @@ public class MenuValidator {
         }
     }
 
-    public static void checkDuplication(List<String> checkValue){
+    public static void checkDuplication(List<String> checkValue) throws IllegalArgumentException{
         String deletedValue;
         while (checkValue.size() > 0) {
             deletedValue = checkValue.remove(0);
             if (checkValue.contains(deletedValue)) {
                 throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
             }
+        }
+    }
+
+    public static void checkMenuName(String name) throws IllegalArgumentException{
+        if (Menu.findMenu(name) == null) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
 
