@@ -4,6 +4,7 @@ import static christmas.Constant.MsgConstantPiece.COMMA;
 import static christmas.Constant.MsgConstantPiece.DASH;
 
 import christmas.Validator.EventValidator;
+import christmas.Validator.InputValidator;
 import christmas.Validator.IntegerValidator;
 import christmas.Validator.MenuValidator;
 import java.util.Arrays;
@@ -17,7 +18,7 @@ public class Converter {
     }
 
     public static Integer convertStringToPositiveInt(String value) throws IllegalArgumentException{
-        IntegerValidator.checkEmptyValue(value);
+        InputValidator.checkEmptyValue(value);
         IntegerValidator.checkPositiveNumber(value);
         return Integer.valueOf(value);
     }
