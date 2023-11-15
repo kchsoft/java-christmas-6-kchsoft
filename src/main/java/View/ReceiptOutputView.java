@@ -28,6 +28,7 @@ public class ReceiptOutputView {
         System.out.println(LINE_BREAKER+"<증정 메뉴>");
         if (receipt.getGiftName() == null) {
             System.out.println(NO_EXIST);
+            return;
         }
         System.out.println(receipt.getGiftName()+BLANK+1+UNIT);
     }
