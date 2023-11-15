@@ -1,5 +1,6 @@
 package christmas;
 
+import static Event.Constant.EventConstant.EVENT_BASE_AMOUNT;
 import static christmas.Constant.MsgConstantPiece.DASH;
 
 import Event.ChristmasEvent;
@@ -38,8 +39,12 @@ public class Restaurant {
     }
 
     private Receipt applyChristmasEvent(Order order){
-        ChristmasEvent event = new ChristmasEvent();
-        return event.applyAllEvent(order);
+        Money originalPirce = order.sumPrice();
+        if( originalPirce.getAmount() >= EVENT_BASE_AMOUNT){
+            ChristmasEvent event = new ChristmasEvent();
+            return event.applyAllEvent(order);
+        }
+        return new Receipt();
     }
 
     private void showEventHistory(Receipt receipt,Order order){
