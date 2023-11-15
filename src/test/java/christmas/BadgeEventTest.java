@@ -8,15 +8,8 @@ import static Event.Constant.EventConstant.TREE;
 import static Event.Constant.EventNameConstant.DECEMBER_EVENT_BADGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import Event.Badge.BadgeEvent;
-import Event.Badge.BadgeEventHistory;
-import Event.DateDiscount.DateDiscountEvent;
-import Event.DayDiscount.DayDiscountEvent;
-import Event.Event;
 import Event.EventHistory;
 import Event.ChristmasEvent;
-import Event.Special.SpecialDiscountEvent;
-import View.ReceiptOutputView;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,6 +20,7 @@ class BadgeEventTest {
 
     private LocalDate visitingDay;
     private Order order;
+    private ChristmasEvent event;
 
     @BeforeEach
     void setVisitingDay() {
@@ -38,12 +32,17 @@ class BadgeEventTest {
         order = new Order(visitingDay);
     }
 
+    @BeforeEach
+    void setEvent(){
+        event = new ChristmasEvent();
+    }
+
     @DisplayName("배지 이벤트가 SANTA가 적용되는지 확인")
     @Test
     void applyBadgeEvent_SANTA() {
         order.addMenu(Menu.ICE_CREAM, 10);
         order.addMenu(Menu.T_BONE_STEAK, 2); // over benefit 20,000
-        ChristmasEvent event = new ChristmasEvent();
+
         Receipt receipt = event.applyAllEvent(order);
 
         EventHistory history = receipt.getHistory(DECEMBER_EVENT_BADGE);
@@ -58,7 +57,6 @@ class BadgeEventTest {
         order.addMenu(Menu.ICE_CREAM, 3);
         order.addMenu(Menu.T_BONE_STEAK, 1); // benefit 10,000 ~ 19,999
 
-        ChristmasEvent event = new ChristmasEvent();
         Receipt receipt = event.applyAllEvent(order);
 
         EventHistory history = receipt.getHistory(DECEMBER_EVENT_BADGE);
@@ -72,7 +70,6 @@ class BadgeEventTest {
     void applyBadgeEvent_STAR() {
         order.addMenu(Menu.ICE_CREAM, 2); // benefit 5,000 ~ 9,999
 
-        ChristmasEvent event = new ChristmasEvent();
         Receipt receipt = event.applyAllEvent(order);
 
         EventHistory history = receipt.getHistory(DECEMBER_EVENT_BADGE);
