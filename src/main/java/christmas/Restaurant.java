@@ -8,6 +8,7 @@ import View.InputView;
 import View.OrderOutputView;
 import View.ReceiptOutputView;
 import christmas.Converter.Converter;
+import christmas.Validator.EventValidator;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -26,14 +27,18 @@ public class Restaurant {
     }
 
     private Order orderMenu(LocalDate visitingDay){
-        List<String> orderMenus = InputView.askMenu();
+        List<String> orderMenus = null;
         Order order = new Order(visitingDay);
 
-        for (String orderMenu : orderMenus) {
-            List<String> nameAndNumber = Arrays.asList(orderMenu.split(DASH));
-            Menu menu = Menu.findMenu(nameAndNumber.get(0));
-            Integer number = Converter.convertStringToInt(nameAndNumber.get(1));
-            order.addMenu(menu,number);
+        while (orderMenus == null) {
+            try {
+                orderMenus = InputView.askMenu();
+                order.addMenus(orderMenus);
+                EventValidator.checkMaxMenuNumber(order);
+            } catch (IllegalArgumentException illegalArgumentException) {
+                System.out.println(illegalArgumentException.getMessage());
+                orderMenus = null;
+            }
         }
         return order;
     }

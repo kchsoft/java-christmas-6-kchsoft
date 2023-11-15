@@ -32,7 +32,7 @@ public class InputView {
         for (String oneMenu : orderMenus) {
             List<String> nameAndNumber = Arrays.asList(oneMenu.split(DASH));
             EventValidator.checkMenuName(nameAndNumber.get(0));
-            EventValidator.checkInteger(nameAndNumber.get(1));
+            EventValidator.checkPositiveInteger(nameAndNumber.get(1));
         }
         return orderMenus;
     }

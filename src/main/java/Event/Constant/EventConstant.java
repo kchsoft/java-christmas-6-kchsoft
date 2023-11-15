@@ -10,6 +10,8 @@ public class EventConstant {
 
     public static final Integer EVENT_BASE_AMOUNT = 10000;
 
+    public static final Integer MAX_MENU_NUMBER = 20;
+
     public static final String STAR = "별";
     public static final String TREE = "트리";
     public static final String SANTA = "산타";

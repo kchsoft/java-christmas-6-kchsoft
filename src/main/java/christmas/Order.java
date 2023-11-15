@@ -1,8 +1,12 @@
 package christmas;
 
+import static christmas.Constant.MsgConstantPiece.DASH;
+
+import christmas.Converter.Converter;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,6 +47,15 @@ public class Order {
 
     public void addMenu(Menu menu, Integer menuCount){
         sheet.put(menu, menuCount);
+    }
+
+    public void addMenus(List<String> orderMenus) throws IllegalArgumentException{
+        for (String orderMenu : orderMenus) {
+            List<String> nameAndNumber = Arrays.asList(orderMenu.split(DASH));
+            Menu menu = Menu.findMenu(nameAndNumber.get(0));
+            Integer number = Integer.valueOf(nameAndNumber.get(1));
+            addMenu(menu, number);
+        }
     }
 
     public Money sumPrice(){

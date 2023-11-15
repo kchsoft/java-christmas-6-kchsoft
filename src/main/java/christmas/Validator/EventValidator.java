@@ -1,5 +1,10 @@
 package christmas.Validator;
 
+import static Event.Constant.EventConstant.MAX_MENU_NUMBER;
+
+import christmas.Menu;
+import christmas.Order;
+
 public class EventValidator {
 
     public static void checkDecemberDay(Integer day){
@@ -8,7 +13,17 @@ public class EventValidator {
     public static void checkMenuName(String name) {
     }
 
-    public static void checkInteger(String value){
+    public static void checkPositiveInteger(String value){
+    }
+
+    public static void checkMaxMenuNumber(Order order) throws IllegalArgumentException{
+        Integer orderCount = 0;
+        for (Menu menu : order.getMenus()) {
+            orderCount += order.countNumberOf(menu);
+        }
+        if (orderCount > MAX_MENU_NUMBER) {
+            throw new IllegalArgumentException("[ERROE] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
+        }
     }
 
 }
