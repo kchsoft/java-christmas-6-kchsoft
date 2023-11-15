@@ -13,9 +13,19 @@ import java.util.List;
 
 public class EventValidator {
 
-    public static void checkDecemberDay(Integer day) throws IllegalArgumentException{
+    public static void checkDecemberDay(String value) throws IllegalArgumentException{
+        checkPositiveInt(value);
+        Integer day = Integer.valueOf(value);
         if(day < EVENT_START_DATE || day > DAY_DISCOUNT_EVENT_FINAL_DATE){
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요");
+        }
+    }
+
+    private static void checkPositiveInt(String value) throws IllegalArgumentException {
+        for (char oneValue : value.toCharArray()) {
+            if(oneValue < '0' || oneValue > '9'){
+                throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요");
+            }
         }
     }
 

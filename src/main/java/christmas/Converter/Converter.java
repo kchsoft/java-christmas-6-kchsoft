@@ -12,9 +12,8 @@ import java.util.List;
 public class Converter {
 
     public static Integer convertStringToDecemberDay(String value) throws IllegalArgumentException{
-        Integer date = convertStringToPositiveInt(value);
-        EventValidator.checkDecemberDay(date);
-        return date;
+        EventValidator.checkDecemberDay(value);
+        return Integer.valueOf(value);
     }
 
     public static Integer convertStringToPositiveInt(String value) throws IllegalArgumentException{
