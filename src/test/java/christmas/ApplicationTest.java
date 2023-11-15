@@ -6,10 +6,14 @@ import static christmas.Constant.ErrorMsgConstant.ERROR_NOT_VALID_DAY;
 import static christmas.Constant.ErrorMsgConstant.ERROR_NOT_VALID_ORDER;
 import static christmas.Constant.ErrorMsgConstant.ERROR_ONLY_BEVERAGE_ORDER_NOT_ALLOW;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import christmas.Validator.DayValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class ApplicationTest extends NsTest {
     private static final String LINE_SEPARATOR = System.lineSeparator();
@@ -76,25 +80,27 @@ class ApplicationTest extends NsTest {
     @Test
     public void createEmptyInput(){
         assertSimpleTest(() -> {
-            runException("", "제로콜라-3,초코케이크-20");
-            assertThat(output()).contains(ERROR_NOT_VALID_DAY);
+            assertThatThrownBy(() -> DayValidator.checkEmptyValue(""))
+                    .isInstanceOf(IllegalArgumentException.class);
         });
     }
 
     @DisplayName("날짜 입력 범위를 벗어나면 예외 발생")
-    @Test
-    public void createOverRangeDay(){
+    @ValueSource(strings = {"0","-1","32","45"})
+    @ParameterizedTest
+    public void createOverRangeDay(String day){
         assertSimpleTest(() -> {
-            runException("32", "초코케이크-5,레드와인-2");
+            runException(day);
             assertThat(output()).contains(ERROR_NOT_VALID_DAY);
         });
     }
 
     @DisplayName("메뉴 입력 형식이 벗어나면 예외 발생")
-    @Test
-    public void createIllegalMenuFormat(){
+    @ValueSource(strings = {"초코케이크-4 레드와인-3","해산물파스타3","크리스마스파스타3,티본스테이크-1","제로콜라-4, "})
+    @ParameterizedTest
+    public void createIllegalMenuFormat(String orderMenu){
         assertSimpleTest(() -> {
-            runException("13", "초코케이크-5 레드와인-2");
+            runException("13", orderMenu);
             assertThat(output()).contains(ERROR_NOT_VALID_ORDER);
         });
     }
