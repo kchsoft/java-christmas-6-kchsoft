@@ -23,7 +23,16 @@ public class Restaurant {
     }
 
     private LocalDate setVisitngDay(){
-        return InputView.askVisitingDay();
+        LocalDate date = null;
+        try {
+            while (date == null) {
+                date = InputView.askVisitingDay();
+            }
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+            date = null;
+        }
+        return date;
     }
 
     private Order orderMenu(LocalDate visitingDay){
