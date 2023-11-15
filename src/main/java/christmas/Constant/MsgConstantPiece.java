@@ -10,4 +10,7 @@ public class MsgConstantPiece {
     public static final String LINE_BREAKER = "\n";
     public static final String WON = "원";
     public static final String UNIT = "개";
+
+    public static final String NO_EXIST = "없음";
+    public static final String ZERO = "0";
 }

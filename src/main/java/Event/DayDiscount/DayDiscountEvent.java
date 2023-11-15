@@ -36,6 +36,9 @@ public class DayDiscountEvent implements Event<Order> {
         for (Menu menu : dessertMenu) {
             dessertCount += order.countNumberOf(menu);
         }
+        if (dessertCount == 0) {
+            return null;
+        }
         return new DayDiscountEventHistory(WEEKDAY_DISCOUNT, new Money(MENU_DISCOUNT * dessertCount));
     }
 
@@ -44,6 +47,9 @@ public class DayDiscountEvent implements Event<Order> {
         List<Menu> dessertMenu = order.getMenusOfType(MAIN);
         for (Menu menu : dessertMenu) {
             mainCount += order.countNumberOf(menu);
+        }
+        if (mainCount == 0) {
+            return null;
         }
         return new DayDiscountEventHistory(WEEKEND_DISCOUNT, new Money(MENU_DISCOUNT * mainCount));
     }

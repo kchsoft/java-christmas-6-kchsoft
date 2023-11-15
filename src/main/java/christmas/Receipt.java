@@ -45,7 +45,7 @@ public class Receipt {
         Money giftAmount = new Money();
         Menu giftMenu = findGiftMenu();
         if (giftMenu == null) {
-            return EMPTY_STRING;
+            return null;
         }
         return giftMenu.getName();
     }
