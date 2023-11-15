@@ -10,38 +10,15 @@ import static christmas.Constant.MsgConstantPiece.WON;
 import Event.EventHistory;
 import christmas.Menu;
 import christmas.Money;
-import christmas.Order;
 import christmas.Receipt;
 import java.util.List;
 
-public class OutputView {
-
-    public static void showOrderHistory(Order order) {
-        printOrderMenu(order);
-        printOriginalPrice(order);
-    }
-
-    public static void printOrderMenu(Order order){
-        Integer menuCount = 0;
-        System.out.println("<주문메뉴>");
-        for (Menu oneMenu : order.getMenus()) {
-            menuCount = order.countNumberOf(oneMenu);
-            printOneMenu(oneMenu,menuCount);
-        }
-    }
-    public static void printOneMenu(Menu menu, Integer menuCount) {
-        System.out.println(menu.getName() + BLANK +menuCount + UNIT);
-    }
-
-    public static void printOriginalPrice(Order order){
-        System.out.println(LINE_BREAKER+"<할인 전 총주문 금액>");
-        Money originalPrice = order.sumPrice();
-        System.out.println(originalPrice.toString()+WON);
-    }
+public class ReceiptOutputView {
 
     public static void showReceiptHistory(Receipt receipt){
         printGiftMenu(receipt);
         showBenefitAmount(receipt);
+        printFinalPrice(receipt);
     }
 
     public static void printGiftMenu(Receipt receipt) {
@@ -85,7 +62,15 @@ public class OutputView {
         Money sum = new Money();
         sum.add(receipt.getDiscountAmount());
         sum.add(receipt.getGiftAmount());
-        System.out.println(MINUS+sum.toString()+WON);
+        System.out.println(MINUS + sum.toString() + WON);
     }
+
+    public static void printFinalPrice(Receipt receipt) {
+        System.out.println(LINE_BREAKER+"<할인 후 예상 결제 금액>");
+        Money finalPrice = receipt.findOriginalPrice();
+        finalPrice.subtract(receipt.getDiscountAmount());
+        System.out.println(finalPrice.toString() + WON);
+    }
+
 
 }

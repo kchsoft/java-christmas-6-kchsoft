@@ -26,6 +26,14 @@ public class Money {
         this.money += money;
     }
 
+    public void subtract(Money money){
+        subtract(money.getAmount());
+    }
+
+    public void subtract(Integer money) {
+        this.money -= money;
+    }
+
     public String toString(){
         String value = String.valueOf(money);
         String commaValue = EMPTY_STRING;
@@ -38,4 +46,5 @@ public class Money {
         }
         return commaValue;
     }
+
 }

@@ -5,7 +5,8 @@ import Event.DateDiscount.DateDiscountEvent;
 import Event.DayDiscount.DayDiscountEvent;
 import Event.Gift.GiftEvent;
 import Event.Special.SpecialDiscountEvent;
-import View.OutputView;
+import View.OrderOutputView;
+import View.ReceiptOutputView;
 import java.time.LocalDate;
 
 public class Application {
@@ -33,8 +34,8 @@ public class Application {
         BadgeEvent badgeEvent = new BadgeEvent();
         receipt.addHistory(badgeEvent.apply(receipt));
 
-        OutputView.showOrderHistory(order);
-        OutputView.showReceiptHistory(receipt);
+        OrderOutputView.showOrderHistory(order);
+        ReceiptOutputView.showReceiptHistory(receipt);
     }
 
 }

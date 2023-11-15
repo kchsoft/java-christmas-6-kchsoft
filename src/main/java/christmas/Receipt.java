@@ -66,4 +66,8 @@ public class Receipt {
         return new ArrayList<>(history);
     }
 
+    public Money findOriginalPrice(){
+        return order.sumPrice();
+    }
+
 }
