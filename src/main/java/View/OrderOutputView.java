@@ -18,7 +18,7 @@ public class OrderOutputView {
 
     public static void printOrderMenu(Order order){
         Integer menuCount = 0;
-        System.out.println("<주문메뉴>");
+        System.out.println(LINE_BREAKER+"<주문 메뉴>");
         for (Menu oneMenu : order.getMenus()) {
             menuCount = order.countNumberOf(oneMenu);
             printOneMenu(oneMenu,menuCount);
