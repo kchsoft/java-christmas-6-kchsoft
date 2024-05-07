@@ -14,7 +14,20 @@ public class Restaurant {
 
     public void open(){
         Customer customer = new Customer();
-        Integer day = customer.askVisitingDay();
+        Integer day = getVisitingDayOf(customer);
         HashMap<Food,Integer> orderInfo = customer.askOrderInfo(menuBoard);
+    }
+
+    private Integer getVisitingDayOf(Customer customer) {
+        Integer day = -1;
+        while (day == -1) {
+            try {
+                // input view
+                day = customer.askVisitingDay();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return day;
     }
 }
