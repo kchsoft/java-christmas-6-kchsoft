@@ -1,6 +1,6 @@
-package Menu;
+package menu;
 
-import static Menu.FoodType.*;
+import static menu.FoodType.*;
 
 public enum Food {
 

@@ -1,7 +1,7 @@
 package christmas;
 
-import Menu.Food;
-import Menu.MenuBoard;
+import menu.Food;
+import menu.MenuBoard;
 
 import java.util.HashMap;
 
