@@ -38,4 +38,13 @@ public enum Food {
     public int getCost() {
         return cost;
     }
+
+    public static Food findbyName(String name) throws IllegalArgumentException{
+        for (Food food : Food.values()) {
+            if (food.getName().equals(name)) {
+                return food;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
 }

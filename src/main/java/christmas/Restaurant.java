@@ -1,9 +1,9 @@
 package christmas;
 
-import menu.Food;
 import menu.MenuBoard;
+import order.FoodOrder;
 
-import java.util.HashMap;
+import java.util.List;
 
 public class Restaurant {
     MenuBoard menuBoard;
@@ -15,7 +15,20 @@ public class Restaurant {
     public void open(){
         Customer customer = new Customer();
         Integer day = getVisitingDayOf(customer);
-        HashMap<Food,Integer> orderInfo = customer.askOrderInfo(menuBoard);
+        List<FoodOrder> orderInfo = getFoodOrderOf(customer);
+    }
+
+    private List<FoodOrder> getFoodOrderOf(Customer customer) {
+        List<FoodOrder> orderInfo = null;
+        while (orderInfo == null) {
+            // input view
+            try {
+                orderInfo = customer.askFoodOrder(menuBoard);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return orderInfo;
     }
 
     private Integer getVisitingDayOf(Customer customer) {

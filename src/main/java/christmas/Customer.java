@@ -1,11 +1,11 @@
 package christmas;
 
 import camp.nextstep.edu.missionutils.Console;
-import validator.InputValidator;
-import menu.Food;
 import menu.MenuBoard;
+import order.FoodOrder;
+import validator.InputValidator;
 
-import java.util.HashMap;
+import java.util.List;
 
 public class Customer {
     public Integer askVisitingDay() throws IllegalArgumentException{
@@ -30,9 +30,9 @@ public class Customer {
             throw new IllegalArgumentException();
     }
 
-    public HashMap<Food,Integer> askOrderInfo(MenuBoard menuBoard) {
-        String orderInfo = Console.readLine();
-        return menuBoard.findFoods(orderInfo);
+    public List<FoodOrder> askFoodOrder(MenuBoard menuBoard) throws IllegalArgumentException{
+        String foodInfo = Console.readLine();
+        return menuBoard.findFoods(foodInfo);
     }
 
 
