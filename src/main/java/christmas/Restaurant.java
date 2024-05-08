@@ -1,9 +1,7 @@
 package christmas;
 
 import menu.MenuBoard;
-import order.FoodOrder;
-
-import java.util.List;
+import order.FoodOrders;
 
 public class Restaurant {
     MenuBoard menuBoard;
@@ -15,11 +13,11 @@ public class Restaurant {
     public void open(){
         Customer customer = new Customer();
         Integer day = getVisitingDayOf(customer);
-        List<FoodOrder> orderInfo = getFoodOrderOf(customer);
+        FoodOrders orderInfo = getFoodOrderOf(customer);
     }
 
-    private List<FoodOrder> getFoodOrderOf(Customer customer) {
-        List<FoodOrder> orderInfo = null;
+    private FoodOrders getFoodOrderOf(Customer customer) {
+        FoodOrders orderInfo = null;
         while (orderInfo == null) {
             // input view
             try {

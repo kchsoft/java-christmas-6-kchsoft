@@ -19,4 +19,14 @@ public class FoodOrder {
         return amount;
     }
 
+    @Override
+    public boolean equals(Object foodOrder){
+        if (foodOrder == null || !(foodOrder instanceof FoodOrder)) {
+            return false;
+        }
+        if (this.food == ((FoodOrder) foodOrder).getFood()) {
+            return true;
+        }
+        return false;
+    }
 }

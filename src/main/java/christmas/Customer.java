@@ -2,10 +2,8 @@ package christmas;
 
 import camp.nextstep.edu.missionutils.Console;
 import menu.MenuBoard;
-import order.FoodOrder;
+import order.FoodOrders;
 import validator.InputValidator;
-
-import java.util.List;
 
 public class Customer {
     public Integer askVisitingDay() throws IllegalArgumentException{
@@ -30,7 +28,7 @@ public class Customer {
             throw new IllegalArgumentException();
     }
 
-    public List<FoodOrder> askFoodOrder(MenuBoard menuBoard) throws IllegalArgumentException{
+    public FoodOrders askFoodOrder(MenuBoard menuBoard) throws IllegalArgumentException{
         String foodInfo = Console.readLine();
         return menuBoard.findFoods(foodInfo);
     }
