@@ -3,14 +3,14 @@ package order;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FoodOrderFormats {
-    private final List<FoodOrderFormat> formats;
+public class OrderFormats {
+    private final List<OrderFormat> formats;
 
-    public FoodOrderFormats() {
+    public OrderFormats() {
         formats = new LinkedList<>();
     }
 
-    public void add(FoodOrderFormat format) {
+    public void add(OrderFormat format) {
         formats.add(format);
     }
 
@@ -26,7 +26,7 @@ public class FoodOrderFormats {
         return formats.get(i).getAmount();
     }
 
-    public FoodOrderFormat get(int i) {
+    public OrderFormat get(int i) {
         return formats.get(i);
     }
 

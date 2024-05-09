@@ -1,16 +1,16 @@
 package order;
 
-public class FoodOrderFormat {
+public class OrderFormat {
     private final String name;
     private final String amount;
 
-    public FoodOrderFormat(String value) throws IllegalArgumentException{
-        String[] values = splitByDash(value);
-        this.name = values[0];
-        this.amount = values[1];
+    public OrderFormat(String orderInfo) throws IllegalArgumentException{
+        String[] orderInfos = splitByDash(orderInfo);
+        this.name = orderInfos[0];
+        this.amount = orderInfos[1];
     }
 
-    public FoodOrderFormat(String name, String amount) {
+    public OrderFormat(String name, String amount) {
         this.name = name;
         this.amount = amount;
     }

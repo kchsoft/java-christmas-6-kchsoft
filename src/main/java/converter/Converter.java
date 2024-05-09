@@ -1,7 +1,7 @@
 package converter;
 
-import order.FoodOrderFormat;
-import order.FoodOrderFormats;
+import order.OrderFormat;
+import order.OrderFormats;
 import validator.InputValidator;
 
 import java.util.LinkedList;
@@ -14,17 +14,13 @@ public class Converter {
         return Integer.valueOf(value);
     }
 
-    public static FoodOrderFormats stringToFoodOrderFormats(String foodInfos) throws IllegalArgumentException {
-        try {
-            List<String> eachFoodInfo = splitFoodInfos(foodInfos);
-            FoodOrderFormats orderFormats = infoToFoodOrderFormats(eachFoodInfo);
-            return orderFormats;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
-        }
+    public static OrderFormats stringToOrderFormats(String orderInfos) throws IllegalArgumentException {
+        List<String> eachOrderInfo = splitOrderInfos(orderInfos);
+        OrderFormats orderFormats = infoToOrderFormats(eachOrderInfo);
+        return orderFormats;
     }
 
-    private static List<String> splitFoodInfos(String infos) throws IllegalArgumentException{
+    private static List<String> splitOrderInfos(String infos) throws IllegalArgumentException{
         List<String> eachInfo = new LinkedList<>();
         for (String foodInfo : infos.split(",")) {
             eachInfo.add(foodInfo);
@@ -34,11 +30,11 @@ public class Converter {
     }
 
 
-    private static FoodOrderFormats infoToFoodOrderFormats(List<String> eachFoodInfo) throws IllegalArgumentException{
-        FoodOrderFormat info;
-        FoodOrderFormats infos = new FoodOrderFormats();
-        for (String foodInfo : eachFoodInfo) {
-            info = new FoodOrderFormat(foodInfo);
+    private static OrderFormats infoToOrderFormats(List<String> eachOrderInfo) throws IllegalArgumentException{
+        OrderFormat info;
+        OrderFormats infos = new OrderFormats();
+        for (String orderInfo : eachOrderInfo) {
+            info = new OrderFormat(orderInfo);
             infos.add(info);
         }
         return infos;
