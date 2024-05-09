@@ -1,5 +1,7 @@
 package christmas;
 
+import customer.Customer;
+import customer.VisitingDay;
 import menu.MenuBoard;
 import order.FoodOrders;
 
@@ -12,7 +14,7 @@ public class Restaurant {
 
     public void open(){
         Customer customer = new Customer();
-        Integer day = getVisitingDayOf(customer);
+        VisitingDay day = getVisitingDayOf(customer);
         FoodOrders orderInfo = getFoodOrderOf(customer);
     }
 
@@ -29,9 +31,9 @@ public class Restaurant {
         return orderInfo;
     }
 
-    private Integer getVisitingDayOf(Customer customer) {
-        Integer day = -1;
-        while (day == -1) {
+    private VisitingDay getVisitingDayOf(Customer customer) {
+        VisitingDay day = null;
+        while (day == null) {
             try {
                 // input view
                 day = customer.askVisitingDay();
