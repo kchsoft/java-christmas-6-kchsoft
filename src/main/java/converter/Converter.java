@@ -2,10 +2,8 @@ package converter;
 
 import order.OrderFormat;
 import order.OrderFormats;
+import order.OrderInfos;
 import validator.InputValidator;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class Converter {
 
@@ -14,30 +12,28 @@ public class Converter {
         return Integer.valueOf(value);
     }
 
-    public static OrderFormats stringToOrderFormats(String orderInfos) throws IllegalArgumentException {
-        List<String> eachOrderInfo = splitOrderInfos(orderInfos);
-        OrderFormats orderFormats = infoToOrderFormats(eachOrderInfo);
-        return orderFormats;
+    public static OrderFormats stringToOrderFormats(String customerOrderInfo) throws IllegalArgumentException {
+        OrderInfos orderInfo = stringToOrderInfos(customerOrderInfo);
+        return orderInfosToOrderFormats(orderInfo);
     }
 
-    private static List<String> splitOrderInfos(String infos) throws IllegalArgumentException{
-        List<String> eachInfo = new LinkedList<>();
-        for (String foodInfo : infos.split(",")) {
-            eachInfo.add(foodInfo);
+    private static OrderInfos stringToOrderInfos(String customerOrderInfo) throws IllegalArgumentException{
+        OrderInfos orderInfos = new OrderInfos();
+        for (String orderInfo : customerOrderInfo.split(",")) {
+            orderInfos.add(orderInfo);
         }
-        if(eachInfo.size() == 0) throw new IllegalArgumentException();
-        return eachInfo;
+        if(orderInfos.size() == 0) throw new IllegalArgumentException();
+        return orderInfos;
     }
 
-
-    private static OrderFormats infoToOrderFormats(List<String> eachOrderInfo) throws IllegalArgumentException{
-        OrderFormat info;
-        OrderFormats infos = new OrderFormats();
-        for (String orderInfo : eachOrderInfo) {
-            info = new OrderFormat(orderInfo);
-            infos.add(info);
+    private static OrderFormats orderInfosToOrderFormats(OrderInfos orderInfos) throws IllegalArgumentException{
+        OrderFormat format;
+        OrderFormats formats = new OrderFormats();
+        for (int index = 0 ; index < orderInfos.size() ; index++) {
+            format = new OrderFormat(orderInfos.get(index));
+            formats.add(format);
         }
-        return infos;
+        return formats;
     }
 
 }
