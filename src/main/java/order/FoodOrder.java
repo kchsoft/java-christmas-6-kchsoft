@@ -1,10 +1,16 @@
 package order;
 
+import converter.Converter;
 import menu.Food;
 
 public class FoodOrder {
     private final Food food;
     private final Integer amount;
+
+    public FoodOrder(FoodOrderFormat orderFormat) throws IllegalArgumentException{
+        this.food  = Food.findbyName(orderFormat.getName());
+        this.amount = Converter.stringToInt(orderFormat.getAmount());
+    }
 
     public FoodOrder(Food food, Integer amount) {
         this.food = food;
