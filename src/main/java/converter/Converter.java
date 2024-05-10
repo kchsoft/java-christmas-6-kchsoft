@@ -17,7 +17,7 @@ public class Converter {
         return orderInfosToOrderFormats(orderInfo);
     }
 
-    private static OrderInfos stringToOrderInfos(String customerOrderInfo) throws IllegalArgumentException{
+    public static OrderInfos stringToOrderInfos(String customerOrderInfo) throws IllegalArgumentException{
         OrderInfos orderInfos = new OrderInfos();
         for (String orderInfo : customerOrderInfo.split(",")) {
             orderInfos.add(orderInfo);
@@ -26,7 +26,7 @@ public class Converter {
         return orderInfos;
     }
 
-    private static OrderFormats orderInfosToOrderFormats(OrderInfos orderInfos) throws IllegalArgumentException{
+    public static OrderFormats orderInfosToOrderFormats(OrderInfos orderInfos) throws IllegalArgumentException{
         OrderFormat format;
         OrderFormats formats = new OrderFormats();
         for (int index = 0 ; index < orderInfos.size() ; index++) {
