@@ -3,6 +3,7 @@ package customer;
 import camp.nextstep.edu.missionutils.Console;
 import converter.Converter;
 import order.Order;
+import order.OrderFormatPattern;
 import order.OrderFormats;
 import order.Orders;
 
@@ -17,6 +18,7 @@ public class Customer {
     public Orders order() throws IllegalArgumentException{
         try {
             String orderInfos = Console.readLine();
+            OrderFormatPattern.matches(orderInfos);
             OrderFormats orderFormats = Converter.stringToOrderFormats(orderInfos);
             return findFoods(orderFormats);
         } catch (IllegalArgumentException e) {
