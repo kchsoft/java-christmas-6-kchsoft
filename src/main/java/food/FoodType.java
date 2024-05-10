@@ -1,4 +1,4 @@
-package menu;
+package food;
 
 public enum FoodType {
     APPETIZER("Appetizer"),

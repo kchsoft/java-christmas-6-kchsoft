@@ -1,6 +1,6 @@
-package menu;
+package food;
 
-import static menu.FoodType.*;
+import static food.FoodType.*;
 
 public enum Food {
 
@@ -17,17 +17,17 @@ public enum Food {
     RED_WINE(BEVERAGE, "레드와인", 60000),
     CHAMPAGNE(BEVERAGE, "샴페인", 25000);
 
-    private final FoodType foodType;
+    private final food.FoodType foodType;
     private final String name;
     private final int cost;
 
-    Food(FoodType foodType, String name, int cost) {
+    Food(food.FoodType foodType, String name, int cost) {
         this.foodType = foodType;
         this.name = name;
         this.cost = cost;
     }
 
-    public FoodType getFoodType() {
+    public food.FoodType getFoodType() {
         return foodType;
     }
 

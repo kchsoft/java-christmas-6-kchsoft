@@ -1,7 +1,7 @@
 package order;
 
 import converter.Converter;
-import menu.Food;
+import food.Food;
 
 public class Order {
     private final Food food;
