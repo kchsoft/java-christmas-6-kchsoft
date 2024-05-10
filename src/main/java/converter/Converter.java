@@ -12,26 +12,25 @@ public class Converter {
         return Integer.valueOf(value);
     }
 
-    public static OrderFormats stringToOrderFormats(String customerOrderInfo) throws IllegalArgumentException {
+    public static OrderFormats stringToOrderFormats(String customerOrderInfo) {
         OrderInfos orderInfo = stringToOrderInfos(customerOrderInfo);
         return orderInfosToOrderFormats(orderInfo);
     }
 
-    public static OrderInfos stringToOrderInfos(String customerOrderInfo) throws IllegalArgumentException{
+    public static OrderInfos stringToOrderInfos(String customerOrderInfo) {
         OrderInfos orderInfos = new OrderInfos();
         for (String orderInfo : customerOrderInfo.split(",")) {
             orderInfos.add(orderInfo);
         }
-        if(orderInfos.size() == 0) throw new IllegalArgumentException();
         return orderInfos;
     }
 
-    public static OrderFormats orderInfosToOrderFormats(OrderInfos orderInfos) throws IllegalArgumentException{
-        OrderFormat format;
+    public static OrderFormats orderInfosToOrderFormats(OrderInfos orderInfos) {
         OrderFormats formats = new OrderFormats();
         for (int index = 0 ; index < orderInfos.size() ; index++) {
-            format = new OrderFormat(orderInfos.get(index));
-            formats.add(format);
+            String orderInfo = orderInfos.get(index);
+            String[] nameAmount = orderInfo.split("-");
+            formats.add(new OrderFormat(nameAmount[0],nameAmount[1]));
         }
         return formats;
     }
