@@ -8,7 +8,7 @@ public class Order {
     private final Integer amount;
 
     public Order(OrderFormat orderFormat) throws IllegalArgumentException{
-        this.food  = Food.findbyName(orderFormat.getName());
+        this.food  = Food.findByName(orderFormat.getName());
         this.amount = Converter.stringToInt(orderFormat.getAmount());
     }
 

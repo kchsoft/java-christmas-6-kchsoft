@@ -19,7 +19,7 @@ public enum Food {
 
     private final food.FoodType foodType;
     private final String name;
-    private final int cost;
+    private final Integer cost;
 
     Food(food.FoodType foodType, String name, int cost) {
         this.foodType = foodType;
@@ -39,7 +39,7 @@ public enum Food {
         return cost;
     }
 
-    public static Food findbyName(String name) throws IllegalArgumentException{
+    public static Food findByName(String name) throws IllegalArgumentException{
         for (Food food : Food.values()) {
             if (food.getName().equals(name)) {
                 return food;
