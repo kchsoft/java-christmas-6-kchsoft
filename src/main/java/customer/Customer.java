@@ -9,9 +9,13 @@ import order.Orders;
 
 public class Customer {
     public VisitingDay reserve() throws IllegalArgumentException{
-        String value = Console.readLine();
-        Integer day = Converter.stringToInt(value);
-        return new VisitingDay(day);
+        try {
+            String value = Console.readLine();
+            Integer day = Converter.stringToInt(value);
+            return new VisitingDay(day);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        }
     }
 
 
