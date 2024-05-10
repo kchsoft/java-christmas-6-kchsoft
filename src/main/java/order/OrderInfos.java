@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class OrderInfos {
-    List<String> infos;
+    private List<String> infos;
 
     public OrderInfos() {
         this.infos = new LinkedList<>();
