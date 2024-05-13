@@ -1,6 +1,7 @@
 package christmas;
 
 import customer.Customer;
+import customer.Reservation;
 import customer.VisitingDay;
 import order.Orders;
 
@@ -11,8 +12,10 @@ public class Restaurant {
 
     public void open(){
         Customer customer = new Customer();
-        VisitingDay day = getReserveOf(customer);
+        VisitingDay day = getVisitingDayOf(customer);
         Orders orders = getOrderOf(customer);
+        Reservation reservation = new Reservation(day,orders);
+
     }
 
     private Orders getOrderOf(Customer customer) {
@@ -28,12 +31,12 @@ public class Restaurant {
         return orders;
     }
 
-    private VisitingDay getReserveOf(Customer customer) {
+    private VisitingDay getVisitingDayOf(Customer customer) {
         VisitingDay day = null;
         while (day == null) {
             try {
                 // input view
-                day = customer.reserve();
+                day = customer.selectDay();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

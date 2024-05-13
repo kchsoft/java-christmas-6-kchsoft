@@ -8,7 +8,7 @@ import order.OrderFormats;
 import order.Orders;
 
 public class Customer {
-    public VisitingDay reserve() throws IllegalArgumentException{
+    public VisitingDay selectDay() throws IllegalArgumentException{
         try {
             String value = Console.readLine();
             Integer day = Converter.stringToInt(value);
