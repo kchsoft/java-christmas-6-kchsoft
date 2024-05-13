@@ -27,7 +27,7 @@ public enum Food {
         this.cost = cost;
     }
 
-    public food.FoodType getFoodType() {
+    public FoodType getFoodType() {
         return foodType;
     }
 
