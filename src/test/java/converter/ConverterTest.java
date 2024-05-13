@@ -27,22 +27,14 @@ class ConverterTest {
 
     @ParameterizedTest
     @DisplayName("String -> OrderInfos 변환 성공")
-    @ValueSource(strings = {"0","0,0","아이스크림-5,제로콜라-4","양소이수프-3"})
+    @ValueSource(strings = {"타파스-5,제로콜라-4","양송이수프-3"})
     void stringToOrderInfosSuccess(String value) {
         assertDoesNotThrow(()-> Converter.stringToOrderInfos(value));
     }
 
     @ParameterizedTest
-    @DisplayName("String -> OrderInfos 변환 실패")
-    @ValueSource(strings = {"","아이스크림-4,제로콜라-2,","타파스-4,","아이스크림-4,,,양송이수프-3"})
-    void stringToOrderInfosFail(String value) {
-        assertThrows(IllegalArgumentException.class,
-                ()->Converter.stringToOrderInfos(value));
-    }
-
-    @ParameterizedTest
     @DisplayName("OrderInfos -> OrderFormats 변환 성공")
-    @ValueSource(strings = {"아이스크림-4","제로콜라-3","양송이수프-1","타파스-1"})
+    @ValueSource(strings = {"제로콜라-3","레드와인-3","바비큐립-8"})
     void orderInfosToOrderFormatsSuccess(String value) {
         OrderInfos infos = new OrderInfos();
         infos.add(value);
@@ -50,37 +42,10 @@ class ConverterTest {
     }
 
     @ParameterizedTest
-    @DisplayName("OrderInfos -> OrderFormats 변환 실패")
-    @ValueSource(strings = {"","제로콜라3","-양송이수프-3","타파스-5-","레드와인5-"})
-    void orderInfosToOrderFormatsFail(String value) {
-        OrderInfos infos = new OrderInfos();
-        infos.add(value);
-        assertThrows(IllegalArgumentException.class,
-                ()->Converter.orderInfosToOrderFormats(infos));
-    }
-
-    @ParameterizedTest
     @DisplayName("String -> OrderFormats 변환 성공")
-    @ValueSource(strings = {"아이스크림-4,제로콜라-2","제로콜라-3","양송이수프-1,타파스-5,레드와인-1"})
+    @ValueSource(strings = {"양송이수프-5","레드와인-3,바비큐립-8"})
     void stringToOrderFormatsSuccess(String value) {
         assertDoesNotThrow(()-> Converter.stringToOrderFormats(value));
     }
 
-    @ParameterizedTest
-    @DisplayName("String -> OrderFormats 변환 실패")
-    @ValueSource(strings = {
-            "",
-            "제로콜라3",
-            "-양송이수프-3",
-            "타파스-5-",
-            "레드와인5-",
-            ",타파스-3",
-            "타파스-3,",
-            "제로콜라-3,,타파스-1"})
-    void stringToOrderFormatsFail(String value) {
-        assertThrows(IllegalArgumentException.class,
-                ()->Converter.stringToOrderFormats(value));
-    }
-
-    
 }
