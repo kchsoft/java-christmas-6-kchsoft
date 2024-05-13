@@ -1,5 +1,7 @@
 package order;
 
+import food.Food;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,4 +24,29 @@ public class Orders {
             }
         }
     }
+
+    public List<Food> getFoods() {
+        List<Food> foods = new LinkedList<>();
+        for (Integer index = 0; index < orders.size(); index++) {
+            foods.add(orders.get(index).getFood());
+        }
+        return foods;
+    }
+
+    public Integer getTotalCost() {
+        Integer sum = 0;
+        for (Order order : orders) {
+            sum += order.getCost();
+        }
+        return sum;
+    }
+
+    public Integer getTotalAmount() {
+        Integer allAmount = 0;
+        for (Order order : orders) {
+            allAmount += order.getAmount();
+        }
+        return allAmount;
+    }
+
 }

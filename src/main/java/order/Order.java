@@ -25,6 +25,10 @@ public class Order {
         return amount;
     }
 
+    public Integer getCost() {
+        return food.getCost();
+    }
+
     @Override
     public boolean equals(Object foodOrder){
         if (foodOrder == null || !(foodOrder instanceof Order)) {
@@ -35,4 +39,5 @@ public class Order {
         }
         return false;
     }
+
 }
