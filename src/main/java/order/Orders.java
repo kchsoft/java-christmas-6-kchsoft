@@ -36,7 +36,7 @@ public class Orders {
     public Integer getTotalCost() {
         Integer sum = 0;
         for (Order order : orders) {
-            sum += order.getCost();
+            sum += order.getCost() * order.getAmount();
         }
         return sum;
     }
