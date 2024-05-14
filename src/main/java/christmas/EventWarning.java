@@ -1,6 +1,8 @@
 package christmas;
 
 import customer.Reservation;
+import exception.EventApplyException;
+import exception.FoodOrderException;
 import food.Food;
 import food.FoodType;
 
@@ -17,30 +19,27 @@ public class EventWarning {
         isAllOrderAmountLessThan20(reservation);
     }
 
-    private static void isCostMoreThan10000(Integer totalCost) throws IllegalArgumentException {
+    private static void isCostMoreThan10000(Integer totalCost) throws EventApplyException {
         if(totalCost >= MIN_EVENT_APPLICATION_COST)
             return;
-        throw new IllegalArgumentException();
-        // need to change EventApplyException
+        throw new EventApplyException();
     }
 
-    private static void isNotOnlyBeverageOrder(Reservation reservation) throws IllegalArgumentException{
+    private static void isNotOnlyBeverageOrder(Reservation reservation) throws FoodOrderException{
        List<Food> foods = reservation.getFoods();
         for (Food food : foods) {
             if (food.getFoodType() != FoodType.BEVERAGE) {
                 return;
             }
         }
-        throw new IllegalArgumentException("[ERROR] 음료만 주문 시, 주문할 수 없습니다.");
-        // FoodOrderException
+        throw new FoodOrderException("[ERROR] 음료만 주문 시, 주문할 수 없습니다.");
     }
 
-    private static void isAllOrderAmountLessThan20(Reservation reservation) throws IllegalArgumentException {
+    private static void isAllOrderAmountLessThan20(Reservation reservation) throws FoodOrderException {
         if (reservation.getTotalAmount() < MAX_ORDER_AMOUNT) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
-        // FoodOrderException
+        throw new FoodOrderException("[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
     }
 
 }
