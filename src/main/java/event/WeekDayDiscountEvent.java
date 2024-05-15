@@ -29,11 +29,11 @@ public class WeekDayDiscountEvent extends DiscountEvent{
 
     @Override
     public EventHistory apply(Reservation reservation) {
+        Integer discount = 0;
         if (!days.contains(reservation.getDay())) {
-            return new WeekDayDiscountEventHistory(0);
+            return new WeekDayDiscountEventHistory(discount);
         }
 
-        Integer discount = 0;
         for (Food food : reservation.getFoods()) {
             if (food.getFoodType() == eventFoodType) {
                 discount += reservation.getAmount(food) * DEFAULT_DISCOUNT_COST;

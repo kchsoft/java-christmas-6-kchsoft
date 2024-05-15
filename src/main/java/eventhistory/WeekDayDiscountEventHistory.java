@@ -2,10 +2,10 @@ package eventhistory;
 
 public class WeekDayDiscountEventHistory implements EventHistory {
 
-    private final Integer discontCost;
+    private final Integer discountCost;
 
     public WeekDayDiscountEventHistory(Integer discountCost) {
-        this.discontCost = discountCost;
+        this.discountCost = discountCost;
     }
 
     @Override
@@ -15,6 +15,6 @@ public class WeekDayDiscountEventHistory implements EventHistory {
 
     @Override
     public Integer getBenefit() {
-        return discontCost;
+        return discountCost;
     }
 }
