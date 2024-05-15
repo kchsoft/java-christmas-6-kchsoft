@@ -3,6 +3,7 @@ package customer;
 import food.Food;
 import order.Orders;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 public class Reservation {
@@ -29,4 +30,13 @@ public class Reservation {
     public VisitingDay getVisitingDay() {
         return day;
     }
+
+    public DayOfWeek getDay() {
+        return day.getDayOfWeek();
+    }
+
+    public Integer getAmount(Food food) {
+       return orders.getAmount(food);
+    }
+
 }

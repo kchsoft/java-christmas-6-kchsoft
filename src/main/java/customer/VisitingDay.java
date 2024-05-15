@@ -1,13 +1,15 @@
 package customer;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class VisitingDay {
-    Integer day;
+    LocalDate day;
 
     public VisitingDay(Integer day) throws IllegalArgumentException{
         validate(day);
-        this.day = day;
+        this.day = LocalDate.of(2023,12,day);
     }
 
     private void validate(Integer day) throws IllegalArgumentException{
@@ -19,8 +21,13 @@ public class VisitingDay {
             throw new IllegalArgumentException();
     }
 
-    public Integer getDayValue() {
-        return this.day;
+    public Integer getDateValue() {
+        return this.day.getDayOfMonth();
+    }
+
+
+    public DayOfWeek getDayOfWeek() {
+        return day.getDayOfWeek();
     }
 
     @Override
@@ -28,7 +35,7 @@ public class VisitingDay {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VisitingDay that = (VisitingDay) o;
-        return getDayValue() == ((VisitingDay) o).getDayValue();
+        return Objects.equals(day, that.day);
     }
 
     @Override

@@ -49,4 +49,19 @@ public class Orders {
         return allAmount;
     }
 
+    public Order findOrder(Food targetFood) {
+        for (Integer index = 0; index < orders.size(); index++) {
+            Order order = orders.get(index);
+            if (order.getFood() == targetFood) {
+                return order;
+            }
+        }
+        return null;
+    }
+
+    public Integer getAmount(Food food) {
+        Order order = findOrder(food);
+        return order.getAmount();
+    }
+
 }
