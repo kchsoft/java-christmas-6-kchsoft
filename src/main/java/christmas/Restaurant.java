@@ -7,7 +7,10 @@ import order.Orders;
 
 public class Restaurant {
 
+    private final Watier watier;
+
     public Restaurant() {
+        watier = new Watier();
     }
 
     public void open(){
@@ -15,6 +18,7 @@ public class Restaurant {
         VisitingDay day = getVisitingDayOf(customer);
         Orders orders = getOrderOf(customer);
         Reservation reservation = new Reservation(day,orders);
+        watier.confirm(reservation);
 
     }
 

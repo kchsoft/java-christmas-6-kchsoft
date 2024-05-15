@@ -1,7 +1,11 @@
 package christmas;
 
+import customer.Reservation;
+
 public class Reception {
-    public Reception(Payment payment) {
+
+    public Reception(Reservation reservation) {
 
     }
+
 }

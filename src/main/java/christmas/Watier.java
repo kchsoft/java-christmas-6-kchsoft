@@ -13,12 +13,11 @@ public class Watier {
         try {
             EventWarning.check(reservation);
         } catch (EventApplyException e) {
-            Payment payment = new Payment(reservation, e);
-            return new Reception(payment);
+            return Payment.calculate(reservation,e);
         } catch (FoodOrderException e){
             throw e;
         }
-        Payment payment = new Payment(reservation);
-        return new Reception(payment);
+        return Payment.calculate(reservation);
     }
+
 }
