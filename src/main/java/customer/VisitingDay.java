@@ -1,5 +1,7 @@
 package customer;
 
+import java.util.Objects;
+
 public class VisitingDay {
     Integer day;
 
@@ -29,4 +31,8 @@ public class VisitingDay {
         return getDayValue() == ((VisitingDay) o).getDayValue();
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(day);
+    }
 }
