@@ -1,6 +1,8 @@
 package christmas;
 
 import customer.Reservation;
+import event.EventPlanner;
+import eventhistory.EventHistories;
 import exception.EventApplyException;
 
 public class Payment {
@@ -9,6 +11,8 @@ public class Payment {
     }
 
     public static Reception calculate(Reservation reservation){
+        EventPlanner planner = new EventPlanner();
+        EventHistories histories = planner.apply(reservation);
         return new Reception(reservation);
     }
 

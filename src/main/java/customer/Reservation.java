@@ -25,5 +25,8 @@ public class Reservation {
     public Integer getTotalAmount() {
         return orders.getTotalAmount();
     }
-    
+
+    public VisitingDay getVisitingDay() {
+        return day;
+    }
 }
