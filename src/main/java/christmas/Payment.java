@@ -13,7 +13,7 @@ public class Payment {
     public static Reception calculate(Reservation reservation){
         EventPlanner planner = new EventPlanner();
         EventHistories histories = planner.apply(reservation);
-        return new Reception(reservation);
+        return new Reception(reservation,histories);
     }
 
 }
