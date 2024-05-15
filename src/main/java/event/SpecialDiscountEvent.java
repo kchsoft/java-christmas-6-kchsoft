@@ -21,7 +21,7 @@ public class SpecialDiscountEvent implements Event{
 
     @Override
     public EventHistory apply(Reservation reservation) {
-        if (discountSheet.contains(reservation.getVisitingDay())) {
+        if (!discountSheet.contains(reservation.getVisitingDay())) {
             return new SpecialDiscountEventHistory(0);
         }
         return new SpecialDiscountEventHistory(DEFAULT_DISCOUNT_COST);
