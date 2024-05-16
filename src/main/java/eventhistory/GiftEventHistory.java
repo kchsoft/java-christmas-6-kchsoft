@@ -23,4 +23,10 @@ public class GiftEventHistory implements EventHistory {
     public Food getBenefit() {
         return gift;
     }
+
+    @Override
+    public Integer getBenefitValue() {
+        if(gift == null) return 0;
+        return gift.getCost();
+    }
 }

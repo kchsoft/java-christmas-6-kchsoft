@@ -17,4 +17,9 @@ public class ChristmasDDayDiccountEventHistory implements EventHistory{
         return discountCost;
     }
 
+    @Override
+    public Integer getBenefitValue() {
+        return discountCost;
+    }
+
 }
