@@ -1,25 +1,45 @@
 package event;
 
-import eventhistory.EventHistories;
 import customer.Reservation;
+import eventhistory.EventHistories;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class EventPlanner {
-    List<Event> events;
+    List<PreCalculateEvent> preEvents;
+    List<PostCalculateEvent> postEvents;
 
     public EventPlanner() {
-        events = new LinkedList<>();
-        events.add(new ChristmasDDayDiscountEvent());
+        preEvents = new LinkedList<>();
+        preEvents.add(new ChristmasDDayDiscountEvent());
+        preEvents.add(new WeekDayDiscountEvent());
+        preEvents.add(new WeekendDiscountEvent());
+        preEvents.add(new SpecialDiscountEvent());
+        preEvents.add(new GiftEvent());
+
+        postEvents = new LinkedList<>();
+        postEvents.add(new BadgeEvent());
     }
 
     public EventHistories apply(Reservation reservation) {
+        EventHistories histories = preCalculate(reservation);
+        postCalculate(histories);
+        return histories;
+    }
+
+    private EventHistories preCalculate(Reservation reservation) {
         EventHistories histories = new EventHistories();
-        for (Event event : events) {
+        for (PreCalculateEvent event : preEvents) {
             histories.add(event.apply(reservation));
         }
         return histories;
+    }
+
+    private void postCalculate(EventHistories histories) {
+        for (PostCalculateEvent event : postEvents) {
+            histories.add(event.apply(histories));
+        }
     }
 
 }

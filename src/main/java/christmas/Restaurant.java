@@ -18,7 +18,7 @@ public class Restaurant {
         VisitingDay day = getVisitingDayOf(customer);
         Orders orders = getOrderOf(customer);
         Reservation reservation = new Reservation(day,orders);
-        watier.confirm(reservation);
+        Reception reception = watier.confirm(reservation);
 
     }
 
