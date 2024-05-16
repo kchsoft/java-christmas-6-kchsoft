@@ -15,4 +15,11 @@ public class EventHistories {
         eventHistories.add(history);
     }
 
+    public Integer sumOfDiscount() {
+        Integer discount = 0;
+        for (EventHistory history : eventHistories) {
+            discount += history.getBenefitValue();
+        }
+        return discount;
+    }
 }

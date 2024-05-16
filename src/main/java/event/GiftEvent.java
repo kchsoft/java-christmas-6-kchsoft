@@ -5,7 +5,7 @@ import eventhistory.EventHistory;
 import eventhistory.GiftEventHistory;
 import food.Food;
 
-public class GiftEvent implements Event{
+public class GiftEvent implements PreCalculateEvent {
 
     private final Integer EVENT_APPLICATION_BASE_COST = 120000;
 

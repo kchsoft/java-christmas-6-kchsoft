@@ -10,11 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class SpecialDiscountEventTest {
 
-    Event event = new SpecialDiscountEvent();
+    PreCalculateEvent event = new SpecialDiscountEvent();
     Orders orders = new Orders();
     VisitingDay day;
 

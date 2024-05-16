@@ -7,7 +7,7 @@ import eventhistory.SpecialDiscountEventHistory;
 
 import java.util.HashSet;
 
-public class SpecialDiscountEvent implements Event{
+public class SpecialDiscountEvent implements PreCalculateEvent {
     HashSet<VisitingDay> discountSheet;
     private final Integer DEFAULT_DISCOUNT_COST = 1000;
 

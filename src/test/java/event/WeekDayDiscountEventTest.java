@@ -10,11 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class WeekDayDiscountEventTest {
 
-    Event event = new WeekDayDiscountEvent();
+    PreCalculateEvent event = new WeekDayDiscountEvent();
     Orders orders = new Orders();
     VisitingDay day = new VisitingDay(4);
 
