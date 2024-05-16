@@ -1,6 +1,6 @@
 package event;
 
-public abstract class DiscountEvent implements Event{
+public abstract class DiscountEvent implements PreCalculateEvent {
 
 
 }
