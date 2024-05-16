@@ -4,6 +4,8 @@ import customer.Customer;
 import customer.Reservation;
 import customer.VisitingDay;
 import order.Orders;
+import view.InputView;
+import view.OutputView;
 
 public class Restaurant {
 
@@ -14,12 +16,13 @@ public class Restaurant {
     }
 
     public void open(){
+        InputView.welcome();
         Customer customer = new Customer();
         VisitingDay day = getVisitingDayOf(customer);
         Orders orders = getOrderOf(customer);
         Reservation reservation = new Reservation(day,orders);
         Reception reception = watier.confirm(reservation);
-
+        OutputView.showBenefitHistory(reception);
     }
 
     private Orders getOrderOf(Customer customer) {
