@@ -72,6 +72,7 @@ class EventWarningTest {
         orders.add(new Order(Food.ICE_CREAM, 5));
         orders.add(new Order(Food.ZERO_COLA, 5));
         orders.add(new Order(Food.T_BONE_STEAK, 5));
+        orders.add(new Order(Food.TAPAS, 5));
         reservation = new Reservation(day, orders);
         assertDoesNotThrow(
                 () -> EventWarning.check(reservation));
@@ -84,7 +85,7 @@ class EventWarningTest {
     void orderAmountFail() {
         orders.add(new Order(Food.ICE_CREAM, 10));
         orders.add(new Order(Food.ZERO_COLA, 10));
-        orders.add(new Order(Food.T_BONE_STEAK, 1));
+        orders.add(new Order(Food.TAPAS, 1));
         reservation = new Reservation(day, orders);
         assertThrows(FoodOrderException.class,
                 () -> EventWarning.check(reservation));

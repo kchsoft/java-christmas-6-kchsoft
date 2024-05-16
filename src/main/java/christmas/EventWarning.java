@@ -36,7 +36,7 @@ public class EventWarning {
     }
 
     private static void isAllOrderAmountLessThan20(Reservation reservation) throws FoodOrderException {
-        if (reservation.getTotalAmount() < MAX_ORDER_AMOUNT) {
+        if (reservation.getTotalAmount() <= MAX_ORDER_AMOUNT) {
             return;
         }
         throw new FoodOrderException("[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
