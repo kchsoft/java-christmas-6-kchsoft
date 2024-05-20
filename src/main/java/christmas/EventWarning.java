@@ -5,12 +5,14 @@ import exception.EventApplyException;
 import exception.FoodOrderException;
 import food.Food;
 import food.FoodType;
+import money.Cost;
+import money.UnmodifiedMoney;
 
 import java.util.List;
 
 public class EventWarning {
 
-    private static final Integer MIN_EVENT_APPLICATION_COST = 10000;
+    private static final UnmodifiedMoney MIN_EVENT_APPLICATION_COST = new Cost(10000);
     private static final Integer MAX_ORDER_AMOUNT = 20;
 
     public static void check(Reservation reservation) throws IllegalArgumentException{
@@ -19,8 +21,9 @@ public class EventWarning {
         isAllOrderAmountLessThan20(reservation);
     }
 
-    private static void isCostMoreThan10000(Integer totalCost) throws EventApplyException {
-        if(totalCost >= MIN_EVENT_APPLICATION_COST)
+    private static void isCostMoreThan10000(UnmodifiedMoney totalCost) throws EventApplyException {
+
+        if(totalCost.getIntValue() >= MIN_EVENT_APPLICATION_COST.getIntValue())
             return;
         throw new EventApplyException();
     }

@@ -1,5 +1,6 @@
 package eventhistory;
 
+import christmas.Badge;
 import food.Food;
 import money.Cost;
 import money.UnmodifiedMoney;
@@ -23,10 +24,26 @@ public class EventHistories {
         Integer discount = 0;
         UnmodifiedMoney money;
         for (EventHistory history : eventHistories) {
-            money = history.getBenefitValue();
-            discount += money.getIntValue();
+            Object benefit = history.getBenefit();
+            if (benefit instanceof UnmodifiedMoney) {
+                money = ((UnmodifiedMoney) benefit);
+                discount += money.getIntValue();
+            }
         }
         return new Cost(discount);
+    }
+
+    public UnmodifiedMoney sumOfBenefitCost() {
+        Integer benefitCost = 0;
+        UnmodifiedMoney discount = sumOfDiscount();
+        for (EventHistory history : eventHistories) {
+            Object benefit = history.getBenefit();
+            if (benefit instanceof Food) {
+                Food food = ((Food) benefit);
+                benefitCost += food.getIntCost();
+            }
+        }
+        return new Cost(benefitCost + discount.getIntValue());
     }
 
     public Food getGift() {
@@ -38,4 +55,23 @@ public class EventHistories {
         }
         return gift;
     }
+
+    public EventHistory getHistory(Integer index) {
+        return eventHistories.get(index);
+    }
+
+    public Integer size() {
+        return eventHistories.size();
+    }
+
+    public Badge getBadge() {
+        for (EventHistory history : eventHistories) {
+            if (history instanceof BadgeEventHistory) {
+                return ((BadgeEventHistory) history).getBenefit();
+            }
+
+        }
+        return null;
+    }
+
 }

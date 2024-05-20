@@ -22,7 +22,7 @@ public class Restaurant {
         Orders orders = getOrderOf(customer);
         Reservation reservation = new Reservation(day,orders);
         Reception reception = watier.confirm(reservation);
-        OutputView.showBenefitHistory(reception);
+        OutputView.showReservationResult(reception);
     }
 
     private Orders getOrderOf(Customer customer) {
