@@ -1,18 +1,19 @@
-package eventhistory;
+package eventhistory.weekend;
 
+import eventhistory.EventHistory;
 import money.UnmodifiedMoney;
 
-public class WeekDayDiscountEventHistory implements EventHistory {
+public class WeekendDiscountEventHistory implements EventHistory {
 
     private final UnmodifiedMoney discount;
 
-    public WeekDayDiscountEventHistory(UnmodifiedMoney discountCost) {
-        this.discount = discountCost;
+    public WeekendDiscountEventHistory(UnmodifiedMoney discount) {
+        this.discount = discount;
     }
 
     @Override
     public String getName() {
-        return "평일 할인";
+        return "주말 할인";
     }
 
     @Override

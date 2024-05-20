@@ -1,9 +1,10 @@
-package event;
+package event.special;
 
 import customer.Reservation;
 import customer.VisitingDay;
+import event.PreCalculateEvent;
 import eventhistory.EventHistory;
-import eventhistory.SpecialDiscountEventHistory;
+import eventhistory.special.SpecialDiscountEventHistory;
 import money.Cost;
 import money.UnmodifiedMoney;
 

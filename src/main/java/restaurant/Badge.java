@@ -1,4 +1,4 @@
-package christmas;
+package restaurant;
 
 import money.Cost;
 import money.UnmodifiedMoney;

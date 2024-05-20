@@ -1,8 +1,9 @@
-package event;
+package event.gift;
 
 import customer.Reservation;
+import event.PreCalculateEvent;
 import eventhistory.EventHistory;
-import eventhistory.GiftEventHistory;
+import eventhistory.gift.GiftEventHistory;
 import food.Food;
 import money.Cost;
 import money.UnmodifiedMoney;

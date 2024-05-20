@@ -1,7 +1,8 @@
-package event;
+package event.badge;
 
-import christmas.Badge;
-import eventhistory.BadgeEventHistory;
+import event.PostCalculateEvent;
+import restaurant.Badge;
+import eventhistory.badge.BadgeEventHistory;
 import eventhistory.EventHistories;
 import eventhistory.EventHistory;
 import money.UnmodifiedMoney;

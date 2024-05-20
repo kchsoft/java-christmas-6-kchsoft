@@ -1,8 +1,9 @@
-package eventhistory;
+package eventhistory.christmas;
 
+import eventhistory.EventHistory;
 import money.UnmodifiedMoney;
 
-public class ChristmasDDayDiccountEventHistory implements EventHistory{
+public class ChristmasDDayDiccountEventHistory implements EventHistory {
     private final UnmodifiedMoney discountCost;
 
     public ChristmasDDayDiccountEventHistory(UnmodifiedMoney discountCost) {

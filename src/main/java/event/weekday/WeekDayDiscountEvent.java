@@ -1,8 +1,9 @@
-package event;
+package event.weekday;
 
 import customer.Reservation;
+import event.PreCalculateEvent;
 import eventhistory.EventHistory;
-import eventhistory.WeekendDiscountEventHistory;
+import eventhistory.weekday.WeekDayDiscountEventHistory;
 import food.Food;
 import food.FoodType;
 import money.Cost;
@@ -12,24 +13,28 @@ import java.time.DayOfWeek;
 import java.util.LinkedList;
 import java.util.List;
 
-public class WeekendDiscountEvent extends DiscountEvent{
+public class WeekDayDiscountEvent implements PreCalculateEvent {
 
     private final UnmodifiedMoney DEFAULT_DISCOUNT_COST = new Cost(2023);
     private final List<DayOfWeek> days;
     private final FoodType eventFoodType;
 
-    public WeekendDiscountEvent() {
-        this.days = new LinkedList<>();
-        days.add(DayOfWeek.FRIDAY);
-        days.add(DayOfWeek.SATURDAY);
-        this.eventFoodType = FoodType.MAIN;
+    public WeekDayDiscountEvent() {
+        days = new LinkedList<>();
+        days.add(DayOfWeek.SUNDAY);
+        days.add(DayOfWeek.MONDAY);
+        days.add(DayOfWeek.THURSDAY);
+        days.add(DayOfWeek.WEDNESDAY);
+        days.add(DayOfWeek.THURSDAY);
+
+        eventFoodType = FoodType.DESSERT;
     }
 
     @Override
     public EventHistory apply(Reservation reservation) {
         Integer discount = 0;
         if (!days.contains(reservation.getDay())) {
-            return new WeekendDiscountEventHistory(new Cost(discount));
+            return new WeekDayDiscountEventHistory(new Cost(discount));
         }
 
         for (Food food : reservation.getFoods()) {
@@ -37,7 +42,7 @@ public class WeekendDiscountEvent extends DiscountEvent{
                 discount += reservation.getAmount(food) * DEFAULT_DISCOUNT_COST.getIntValue();
             }
         }
-        return new WeekendDiscountEventHistory(new Cost(discount));
+        return new WeekDayDiscountEventHistory(new Cost(discount));
     }
 
 }

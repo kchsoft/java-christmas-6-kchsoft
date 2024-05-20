@@ -15,7 +15,7 @@ class CustomerTest {
     @DisplayName("1~31 숫자 입력시 날짜 입력 성공")
     @ValueSource(strings = {"1","2","31","16"})
     void dayInputSuccess(String value) {
-        Integer dayInfo = Converter.StringToInt(value);
+        Integer dayInfo = Converter.stringToInt(value);
         VisitingDay day = new VisitingDay(dayInfo);
         Assertions.assertThat(day).isEqualTo(new VisitingDay(Integer.parseInt(value)));
     }
@@ -24,7 +24,7 @@ class CustomerTest {
     @DisplayName("1~31 이외에 숫자 입력시 날짜 입력 실패")
     @ValueSource(strings = {"-1","0","32","35"})
     void dayInputFail(String value) {
-        Integer dayInfo = Converter.StringToInt(value);
+        Integer dayInfo = Converter.stringToInt(value);
         assertThrows(IllegalArgumentException.class,
                 () -> new VisitingDay(dayInfo));
     }

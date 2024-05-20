@@ -1,15 +1,16 @@
-package event;
+package event.christmas;
 
 import customer.Reservation;
 import customer.VisitingDay;
-import eventhistory.ChristmasDDayDiccountEventHistory;
+import event.PreCalculateEvent;
+import eventhistory.christmas.ChristmasDDayDiccountEventHistory;
 import eventhistory.EventHistory;
 import money.Cost;
 import money.UnmodifiedMoney;
 
 import java.util.HashMap;
 
-public class ChristmasDDayDiscountEvent extends DiscountEvent{
+public class ChristmasDDayDiscountEvent implements PreCalculateEvent {
     private final HashMap<VisitingDay, UnmodifiedMoney> discountSheet;
     private final UnmodifiedMoney DEFAULT_DISCOUNT_COST = new Cost(1000);
     private final UnmodifiedMoney PLUS_DISCOUNT_COST = new Cost(100);

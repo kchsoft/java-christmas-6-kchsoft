@@ -1,5 +1,6 @@
-package eventhistory;
+package eventhistory.gift;
 
+import eventhistory.EventHistory;
 import food.Food;
 import money.Cost;
 import money.UnmodifiedMoney;

@@ -1,4 +1,4 @@
-package christmas;
+package restaurant;
 
 import customer.Customer;
 import customer.Reservation;

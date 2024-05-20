@@ -2,6 +2,7 @@ package event;
 
 import customer.Reservation;
 import customer.VisitingDay;
+import event.gift.GiftEvent;
 import eventhistory.EventHistory;
 import food.Food;
 import order.Order;

@@ -1,6 +1,7 @@
-package eventhistory;
+package eventhistory.badge;
 
-import christmas.Badge;
+import eventhistory.EventHistory;
+import restaurant.Badge;
 import money.UnmodifiedMoney;
 
 public class BadgeEventHistory implements EventHistory {

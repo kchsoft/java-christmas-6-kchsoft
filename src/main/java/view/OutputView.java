@@ -1,7 +1,7 @@
 package view;
 
-import christmas.Badge;
-import christmas.Reception;
+import restaurant.Badge;
+import restaurant.Reception;
 import eventhistory.EventHistories;
 import eventhistory.EventHistory;
 import food.Food;

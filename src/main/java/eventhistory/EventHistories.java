@@ -1,6 +1,8 @@
 package eventhistory;
 
-import christmas.Badge;
+import eventhistory.badge.BadgeEventHistory;
+import eventhistory.gift.GiftEventHistory;
+import restaurant.Badge;
 import food.Food;
 import money.Cost;
 import money.UnmodifiedMoney;
