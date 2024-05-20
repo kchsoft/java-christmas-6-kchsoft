@@ -1,6 +1,8 @@
 package order;
 
 import food.Food;
+import money.Cost;
+import money.UnmodifiedMoney;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,12 +35,12 @@ public class Orders {
         return foods;
     }
 
-    public Integer getTotalCost() {
+    public UnmodifiedMoney getTotalCost() {
         Integer sum = 0;
         for (Order order : orders) {
-            sum += order.getCost() * order.getAmount();
+            sum += order.getIntCost() * order.getAmount();
         }
-        return sum;
+        return new Cost(sum);
     }
 
     public Integer getTotalAmount() {

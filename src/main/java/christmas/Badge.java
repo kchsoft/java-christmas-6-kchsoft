@@ -1,24 +1,31 @@
 package christmas;
 
-public enum Badge {
-    STAR(5000,"별"),
-    TREE(10000,"트리"),
-    SANTA(20000,"산타");
+import money.Cost;
+import money.UnmodifiedMoney;
 
-    private final Integer badgeBaseCost;
+public enum Badge {
+    STAR(new Cost(5000),"별"),
+    TREE(new Cost(10000),"트리"),
+    SANTA(new Cost(20000),"산타");
+
+    private final UnmodifiedMoney badgeBaseCost;
     private final String name;
 
-    Badge(Integer badgeBaseCost, String name) {
+    Badge(UnmodifiedMoney badgeBaseCost, String name) {
         this.badgeBaseCost = badgeBaseCost;
         this.name = name;
     }
 
-    public Integer getBaseCost() {
+    public UnmodifiedMoney getBaseCost() {
         return badgeBaseCost;
     }
 
     public String getName() {
         return name;
+    }
+
+    public Integer getIntValue() {
+        return badgeBaseCost.getIntValue();
     }
 
 }

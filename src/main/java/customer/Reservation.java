@@ -1,6 +1,7 @@
 package customer;
 
 import food.Food;
+import money.UnmodifiedMoney;
 import order.Orders;
 
 import java.time.DayOfWeek;
@@ -15,7 +16,7 @@ public class Reservation {
         this.orders = orders;
     }
 
-    public Integer getTotalCost() {
+    public UnmodifiedMoney getTotalCost() {
         return orders.getTotalCost();
     }
 

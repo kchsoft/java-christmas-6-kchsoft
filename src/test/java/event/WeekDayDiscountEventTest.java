@@ -4,6 +4,7 @@ import customer.Reservation;
 import customer.VisitingDay;
 import eventhistory.EventHistory;
 import food.Food;
+import money.Cost;
 import order.Order;
 import order.Orders;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +24,7 @@ class WeekDayDiscountEventTest {
         orders.add(new Order(Food.SEAFOOD_PASTA, 2));
         orders.add(new Order(Food.CHOCOLATE_CAKE, 3));
         EventHistory history = event.apply(new Reservation(day, orders));
-        assertThat(history.getBenefit()).isEqualTo(2023*3);
+        assertThat(history.getBenefit()).isEqualTo(new Cost(2023*3));
     }
 
     @Test
@@ -32,7 +33,7 @@ class WeekDayDiscountEventTest {
         day = new VisitingDay(4);
         orders.add(new Order(Food.SEAFOOD_PASTA, 4));
         EventHistory history = event.apply(new Reservation(day, orders));
-        assertThat(history.getBenefit()).isEqualTo(0);
+        assertThat(history.getBenefit()).isEqualTo(new Cost(0));
     }
 
     @Test
@@ -42,7 +43,7 @@ class WeekDayDiscountEventTest {
         orders.add(new Order(Food.SEAFOOD_PASTA, 4));
         orders.add(new Order(Food.CHOCOLATE_CAKE, 3));
         EventHistory history = event.apply(new Reservation(day, orders));
-        assertThat(history.getBenefit()).isEqualTo(0);
+        assertThat(history.getBenefit()).isEqualTo(new Cost(0));
     }
 
 }

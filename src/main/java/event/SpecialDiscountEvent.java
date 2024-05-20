@@ -4,12 +4,14 @@ import customer.Reservation;
 import customer.VisitingDay;
 import eventhistory.EventHistory;
 import eventhistory.SpecialDiscountEventHistory;
+import money.Cost;
+import money.UnmodifiedMoney;
 
 import java.util.HashSet;
 
 public class SpecialDiscountEvent implements PreCalculateEvent {
     HashSet<VisitingDay> discountSheet;
-    private final Integer DEFAULT_DISCOUNT_COST = 1000;
+    private final UnmodifiedMoney DEFAULT_DISCOUNT_COST = new Cost(1000);
 
     public SpecialDiscountEvent() {
         this.discountSheet = new HashSet<>();
@@ -22,7 +24,7 @@ public class SpecialDiscountEvent implements PreCalculateEvent {
     @Override
     public EventHistory apply(Reservation reservation) {
         if (!discountSheet.contains(reservation.getVisitingDay())) {
-            return new SpecialDiscountEventHistory(0);
+            return new SpecialDiscountEventHistory(new Cost(0));
         }
         return new SpecialDiscountEventHistory(DEFAULT_DISCOUNT_COST);
     }

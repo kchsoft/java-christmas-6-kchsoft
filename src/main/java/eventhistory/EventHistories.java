@@ -1,5 +1,8 @@
 package eventhistory;
 
+import money.UnmodifiedMoney;
+import food.Food;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,9 +20,21 @@ public class EventHistories {
 
     public Integer sumOfDiscount() {
         Integer discount = 0;
+        UnmodifiedMoney money;
         for (EventHistory history : eventHistories) {
-            discount += history.getBenefitValue();
+            money = history.getBenefitValue();
+            discount += money.getIntValue();
         }
         return discount;
+    }
+
+    public Food getGift() {
+        Food gift = null;
+        for (EventHistory history : eventHistories) {
+            if (history instanceof GiftEventHistory) {
+                gift = (Food)history.getBenefit();
+            }
+        }
+        return gift;
     }
 }

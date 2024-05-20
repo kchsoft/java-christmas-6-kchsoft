@@ -1,9 +1,11 @@
 package eventhistory;
 
-public class ChristmasDDayDiccountEventHistory implements EventHistory{
-    private final Integer discountCost;
+import money.UnmodifiedMoney;
 
-    public ChristmasDDayDiccountEventHistory(Integer discountCost) {
+public class ChristmasDDayDiccountEventHistory implements EventHistory{
+    private final UnmodifiedMoney discountCost;
+
+    public ChristmasDDayDiccountEventHistory(UnmodifiedMoney discountCost) {
         this.discountCost = discountCost;
     }
 
@@ -13,12 +15,12 @@ public class ChristmasDDayDiccountEventHistory implements EventHistory{
     }
 
     @Override
-    public Integer getBenefit() {
+    public UnmodifiedMoney getBenefit() {
         return discountCost;
     }
 
     @Override
-    public Integer getBenefitValue() {
+    public UnmodifiedMoney getBenefitValue() {
         return discountCost;
     }
 

@@ -1,10 +1,12 @@
 package eventhistory;
 
+import money.UnmodifiedMoney;
+
 public class WeekendDiscountEventHistory implements EventHistory{
 
-    private final Integer discount;
+    private final UnmodifiedMoney discount;
 
-    public WeekendDiscountEventHistory(Integer discount) {
+    public WeekendDiscountEventHistory(UnmodifiedMoney discount) {
         this.discount = discount;
     }
 
@@ -14,12 +16,12 @@ public class WeekendDiscountEventHistory implements EventHistory{
     }
 
     @Override
-    public Integer getBenefit() {
+    public UnmodifiedMoney getBenefit() {
         return discount;
     }
 
     @Override
-    public Integer getBenefitValue() {
+    public UnmodifiedMoney getBenefitValue() {
         return discount;
     }
 }

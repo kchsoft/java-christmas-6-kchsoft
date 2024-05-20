@@ -2,6 +2,7 @@ package order;
 
 import converter.Converter;
 import food.Food;
+import money.UnmodifiedMoney;
 
 public class Order {
     private final Food food;
@@ -25,8 +26,12 @@ public class Order {
         return amount;
     }
 
-    public Integer getCost() {
+    public UnmodifiedMoney getCost() {
         return food.getCost();
+    }
+
+    public Integer getIntCost() {
+        return food.getIntCost();
     }
 
     @Override

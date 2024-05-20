@@ -1,6 +1,7 @@
 package eventhistory;
 
 import christmas.Badge;
+import money.UnmodifiedMoney;
 
 public class BadgeEventHistory implements EventHistory {
     private final Badge badge;
@@ -19,7 +20,7 @@ public class BadgeEventHistory implements EventHistory {
     }
 
     @Override
-    public Integer getBenefitValue() {
+    public UnmodifiedMoney getBenefitValue() {
         return badge.getBaseCost();
     }
 

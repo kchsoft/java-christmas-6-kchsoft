@@ -1,6 +1,8 @@
 package eventhistory;
 
 import food.Food;
+import money.Cost;
+import money.UnmodifiedMoney;
 
 public class GiftEventHistory implements EventHistory {
 
@@ -25,8 +27,8 @@ public class GiftEventHistory implements EventHistory {
     }
 
     @Override
-    public Integer getBenefitValue() {
-        if(gift == null) return 0;
+    public UnmodifiedMoney getBenefitValue() {
+        if(gift == null) return new Cost(0);
         return gift.getCost();
     }
 }

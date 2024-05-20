@@ -13,11 +13,11 @@ public class BadgeEvent implements PostCalculateEvent {
     @Override
     public EventHistory apply(EventHistories histories) {
         Integer discount = histories.sumOfDiscount();
-        if (discount >= Badge.STAR.getBaseCost() && discount < Badge.TREE.getBaseCost()) {
+        if (discount >= Badge.STAR.getIntValue() && discount < Badge.TREE.getIntValue()) {
             return new BadgeEventHistory(Badge.STAR);
-        } else if (discount >= Badge.TREE.getBaseCost() && discount < Badge.SANTA.getBaseCost()) {
+        } else if (discount >= Badge.TREE.getIntValue() && discount < Badge.SANTA.getIntValue()) {
             return new BadgeEventHistory(Badge.TREE);
-        } else if (discount >= Badge.SANTA.getBaseCost()) {
+        } else if (discount >= Badge.SANTA.getIntValue()) {
             return new BadgeEventHistory(Badge.TREE);
         }
         return new BadgeEventHistory(null);

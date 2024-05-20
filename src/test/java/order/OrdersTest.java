@@ -1,6 +1,7 @@
 package order;
 
 import food.Food;
+import money.UnmodifiedMoney;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -55,11 +56,11 @@ class OrdersTest {
     @Test
     @DisplayName("주문 총비용 조회 성공")
     void getTotalCostSuccess() {
-        Integer total = orders.getTotalCost();
-        Integer compare = Food.BBQ_RIB.getCost() * amount1
-                + Food.RED_WINE.getCost() * amount2
-                + Food.CAESAR_SALAD.getCost() * amount3
-                + Food.ICE_CREAM.getCost() * amount4;
+        UnmodifiedMoney total = orders.getTotalCost();
+        Integer compare = Food.BBQ_RIB.getIntCost() * amount1
+                + Food.RED_WINE.getIntCost() * amount2
+                + Food.CAESAR_SALAD.getIntCost() * amount3
+                + Food.ICE_CREAM.getIntCost() * amount4;
         assertThat(total).isEqualTo(compare);
     }
 
