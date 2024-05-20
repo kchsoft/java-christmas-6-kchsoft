@@ -1,7 +1,8 @@
 package eventhistory;
 
-import money.UnmodifiedMoney;
 import food.Food;
+import money.Cost;
+import money.UnmodifiedMoney;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,14 +19,14 @@ public class EventHistories {
         eventHistories.add(history);
     }
 
-    public Integer sumOfDiscount() {
+    public UnmodifiedMoney sumOfDiscount() {
         Integer discount = 0;
         UnmodifiedMoney money;
         for (EventHistory history : eventHistories) {
             money = history.getBenefitValue();
             discount += money.getIntValue();
         }
-        return discount;
+        return new Cost(discount);
     }
 
     public Food getGift() {
