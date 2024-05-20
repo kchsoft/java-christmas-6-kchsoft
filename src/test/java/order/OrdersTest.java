@@ -1,6 +1,7 @@
 package order;
 
 import food.Food;
+import money.Cost;
 import money.UnmodifiedMoney;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -61,7 +62,7 @@ class OrdersTest {
                 + Food.RED_WINE.getIntCost() * amount2
                 + Food.CAESAR_SALAD.getIntCost() * amount3
                 + Food.ICE_CREAM.getIntCost() * amount4;
-        assertThat(total).isEqualTo(compare);
+        assertThat(total).isEqualTo(new Cost(compare));
     }
 
     @Test

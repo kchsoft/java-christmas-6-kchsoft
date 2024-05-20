@@ -24,7 +24,7 @@ class GiftEventTest {
         orders.add(new Order(Food.CHOCOLATE_CAKE, 2));
         orders.add(new Order(Food.T_BONE_STEAK, 1));
         EventHistory history = event.apply(new Reservation(day, orders));
-        assertThat(history.getBenefit()).isEqualTo(Food.RED_WINE);
+        assertThat(history.getBenefit()).isEqualTo(Food.CHAMPAGNE);
     }
 
     @Test
