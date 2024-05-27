@@ -15,7 +15,8 @@ public class Watier {
         } catch (EventApplyException e) {
             return Payment.calculate(reservation,e);
         } catch (FoodOrderException e){
-            throw e;
+            System.out.println(e.getMessage());
+            return null;
         }
         return Payment.calculate(reservation);
     }

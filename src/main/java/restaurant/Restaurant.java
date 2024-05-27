@@ -19,9 +19,13 @@ public class Restaurant {
         InputView.welcome();
         Customer customer = new Customer();
         VisitingDay day = getVisitingDayOf(customer);
-        Orders orders = getOrderOf(customer);
-        Reservation reservation = new Reservation(day,orders);
-        Reception reception = watier.confirm(reservation);
+        Reception reception = null;
+
+        while(reception == null){
+            Orders orders = getOrderOf(customer);
+            reception = watier.confirm(new Reservation(day,orders));
+        }
+
         OutputView.showReservationResult(reception);
     }
 
