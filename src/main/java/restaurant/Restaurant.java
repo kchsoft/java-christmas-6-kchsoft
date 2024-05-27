@@ -28,8 +28,8 @@ public class Restaurant {
     private Orders getOrderOf(Customer customer) {
         Orders orders = null;
         while (orders == null) {
-            // input view
             try {
+                InputView.guideOrder();
                 orders = customer.order();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -42,7 +42,7 @@ public class Restaurant {
         VisitingDay day = null;
         while (day == null) {
             try {
-                // input view
+                InputView.guideVisitingDay();
                 day = customer.selectDay();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

@@ -3,15 +3,12 @@ package customer;
 import camp.nextstep.edu.missionutils.Console;
 import converter.Converter;
 import order.Order;
-import order.OrderFormatPattern;
 import order.OrderFormats;
 import order.Orders;
-import view.InputView;
 
 public class Customer {
     public VisitingDay selectDay() throws IllegalArgumentException{
         try {
-            InputView.guideVisitingDay();
             String value = Console.readLine();
             Integer day = Converter.stringToInt(value);
             return new VisitingDay(day);
@@ -23,9 +20,7 @@ public class Customer {
 
     public Orders order() throws IllegalArgumentException{
         try {
-            InputView.guideOrder();
             String orderInfos = Console.readLine();
-            OrderFormatPattern.matches(orderInfos);
             OrderFormats orderFormats = Converter.stringToOrderFormats(orderInfos);
             return findFoods(orderFormats);
         } catch (IllegalArgumentException e) {

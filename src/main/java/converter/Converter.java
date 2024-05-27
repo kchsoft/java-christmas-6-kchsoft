@@ -1,6 +1,7 @@
 package converter;
 
 import order.OrderFormat;
+import order.OrderFormatPattern;
 import order.OrderFormats;
 import order.OrderInfos;
 import validator.InputValidator;
@@ -12,7 +13,8 @@ public class Converter {
         return Integer.valueOf(value);
     }
 
-    public static OrderFormats stringToOrderFormats(String customerOrderInfo) {
+    public static OrderFormats stringToOrderFormats(String customerOrderInfo) throws IllegalArgumentException{
+        OrderFormatPattern.matches(customerOrderInfo);
         OrderInfos orderInfo = stringToOrderInfos(customerOrderInfo);
         return orderInfosToOrderFormats(orderInfo);
     }
